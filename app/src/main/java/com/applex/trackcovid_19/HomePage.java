@@ -3,7 +3,6 @@ package com.applex.trackcovid_19;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -49,6 +48,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
     private EditText mPhoneNo;
     private EditText mPinCode;
     private Spinner mSpinnerBlood;
+    Button twitter;
 
     Dialog mydialogue;
     String verificationid;
@@ -59,6 +59,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         setContentView(R.layout.activity_home_page);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        twitter = findViewById(R.id.twitterbtn);
 
         mSpinner = findViewById(R.id.spinnerCountries);
         mSpinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, CountryData.countryNames));
@@ -91,15 +92,20 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         });
 
 
-
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        twitter.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onClick(View v) {
+                Intent i=new Intent(HomePage.this,MainActivity.class);
+                startActivity(i);
             }
         });
+
+
+
+
+
+
+        //////////DRAWER////////////////////
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
@@ -118,6 +124,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
             }
         });
     }
+    //////////DRAWER////////////////////
 
     /////////////////SEND NO FOR VERIFICATION/////////////
     private void sendVerificationCode(String number){

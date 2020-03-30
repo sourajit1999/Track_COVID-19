@@ -18,7 +18,8 @@
         android:lineSpacingExtra="5dp"
         android:padding="10dp"
         android:textSize="18sp"
-        android:fontFamily="monospace"
+        android:layout_marginTop="15dp"
+        android:fontFamily="sans-serif-medium"
         android:text="Did you travel anywhere during the past one month?\nOr, did you attend any large gathering?"
         />
         <TextView
@@ -148,6 +149,49 @@
             android:layout_gravity="center"
             android:textStyle="bold" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="@color/blue"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#C51162"
+            android:lineSpacingExtra="5dp"
+            android:padding="10dp"
+            android:layout_marginTop="15dp"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:fontFamily="monospace"
+            android:text="STAY AWARE"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#08517E"
+            android:lineSpacingExtra="5dp"
+            android:padding="10dp"
+            android:textSize="18sp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Avoid fake news.\nFollow Twitter handles of W.H.O, Govt. Of India and Ministry Of Health. "
+            />
+
+        <Button
+            android:id="@+id/twitterbtn"
+            android:layout_width="183dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="20dp"
+            android:background="@color/blue"
+            android:text="VISIT"
+            android:textAllCaps="false"
+            android:textColor="@android:color/background_light"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
