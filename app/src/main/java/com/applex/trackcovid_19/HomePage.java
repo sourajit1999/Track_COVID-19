@@ -218,16 +218,27 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         int id = menuItem.getItemId();
 
-//        if (id == R.id.guide_child) {
-//            // Handle the camera action
-//            Intent intent=new Intent(HomeActivity.this,children.class);
-//            startActivity(intent);
-//        }
+        if (id == R.id.nav_twitter) {
+            // Handle the camera action
+            Intent intent=new Intent(HomePage.this,MainActivity.class);
+            startActivity(intent);
+        }
 
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                super.onBackPressed();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+
     }
 
 
