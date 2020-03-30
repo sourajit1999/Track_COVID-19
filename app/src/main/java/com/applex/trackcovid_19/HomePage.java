@@ -174,7 +174,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         @Override
         public void onVerificationFailed(FirebaseException e) {
             Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-
+            mydialogue.dismiss();
         }
     };
     /////////////////SEND NO FOR VERIFICATION/////////////
