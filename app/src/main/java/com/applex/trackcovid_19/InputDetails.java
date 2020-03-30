@@ -369,7 +369,8 @@ public class InputDetails extends AppCompatActivity {
                     postDataParams.put(Keys.from ,travel_from);
                     postDataParams.put(Keys.departureTime ,travel_d_time);
                     postDataParams.put(Keys.arrivalTime ,travel_a_time);
-                    postDataParams.put(Keys.source ,source);
+                    postDataParams.put(Keys.departuredate,travel_d_date);
+                    postDataParams.put(Keys.arrivaldate,travel_a_date);
 
                     postDataParams.put(Keys.flightNo ,flight_num);
                     postDataParams.put(Keys.boardingClass ,board_class);
@@ -379,6 +380,8 @@ public class InputDetails extends AppCompatActivity {
                     postDataParams.put(Keys.from ,travel_from);
                     postDataParams.put(Keys.departureTime ,travel_d_time);
                     postDataParams.put(Keys.arrivalTime ,travel_a_time);
+                    postDataParams.put(Keys.departuredate,travel_d_date);
+                    postDataParams.put(Keys.arrivaldate,travel_a_date);
 
                     postDataParams.put(Keys.coachNo ,coach_num);
                     postDataParams.put(Keys.trainName ,train_nam);
@@ -389,6 +392,8 @@ public class InputDetails extends AppCompatActivity {
                     postDataParams.put(Keys.from ,travel_from);
                     postDataParams.put(Keys.departureTime ,travel_d_time);
                     postDataParams.put(Keys.arrivalTime ,travel_a_time);
+                    postDataParams.put(Keys.departuredate,travel_d_date);
+                    postDataParams.put(Keys.arrivaldate,travel_a_date);
                 }
                 else if(sel_ID ==4) { //gathering
 
@@ -452,12 +457,12 @@ public class InputDetails extends AppCompatActivity {
             super.onPostExecute(result);
             mydialogue.dismiss();
             Intent intent = new Intent(InputDetails.this, SuccessActivity.class);
-            intent.putExtra("value","submit");
-            intent.putExtra("name",name);
-            intent.putExtra("email",email);
+//            intent.putExtra("value","submit");
+//            intent.putExtra("name",name);
+//            intent.putExtra("email",email);
 //            intent.putExtra("pic",pic);
             startActivity(intent);
-            overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+//            overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
             finish();
 
         }
