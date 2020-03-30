@@ -41,4 +41,11 @@
         app:lottie_autoPlay="true"
         app:lottie_fileName="17801-stay-at-home.json"/>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Stay at home, Be a Hero"
+        android:gravity="center"
+        android:textSize="20dp"/>
+
 </LinearLayout>
