@@ -30,13 +30,7 @@ import static java.lang.Boolean.FALSE;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Spinner mSpinner;
-    private EditText mPhoneNo;
-    private EditText mPinCode;
-    private Spinner mSpinnerBlood;
 
-    Dialog mydialogue;
-    String verificationid;
 
 
     @Override
@@ -44,36 +38,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mSpinner = findViewById(R.id.spinnerCountries);
-        mSpinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, CountryData.countryNames));
-
-        mPhoneNo = findViewById(R.id.phone);
-
-        mydialogue = new Dialog(MainActivity.this);
-
-        mydialogue.setContentView(R.layout.jumping_panda_progress);
-        mydialogue.setCanceledOnTouchOutside(FALSE);
-        mydialogue.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
 
-        findViewById(R.id.buttonContinue).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String code = CountryData.countryAreaCodes[mSpinner.getSelectedItemPosition()];
-
-                String number = mPhoneNo.getText().toString().trim();
-
-                if (number.isEmpty() || number.length() < 10) {
-                    mPhoneNo.setError("Valid number is required");
-                    mPhoneNo.requestFocus();
-                    return;
-                }
-
-                String phonenumber = "+" + code + number;
-                mydialogue.show();
-                sendVerificationCode(phonenumber);
-            }
-        });
 
 
 
@@ -95,68 +61,10 @@ public class MainActivity extends AppCompatActivity {
 //        }
     }
 
-    /////////////////SEND NO FOR VERIFICATION/////////////
-    private void sendVerificationCode(String number){
-        PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                number,
-                60,
-                TimeUnit.SECONDS,
-                TaskExecutors.MAIN_THREAD,
-                mCallBack
-        );
-    }
-    private PhoneAuthProvider.OnVerificationStateChangedCallbacks
-            mCallBack = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-
-        @Override
-        public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
-            super.onCodeSent(s, forceResendingToken);
-            verificationid = s;
-        }
-
-        @Override
-        public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
-            String code = phoneAuthCredential.getSmsCode();
-            if (code != null){
-                mydialogue.dismiss();
-//                progressBar.setVisibility(View.VISIBLE);
-                verifyCode(code);
-            }
-        }
-
-        @Override
-        public void onVerificationFailed(FirebaseException e) {
-            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-
-        }
-    };
-    /////////////////SEND NO FOR VERIFICATION/////////////
 
 
 
-    private void verifyCode(String code){
-        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationid, code);
-        signInWithCredential(credential);
-    }
 
-    private void signInWithCredential(PhoneAuthCredential credential) {
-        FirebaseAuth.getInstance().signInWithCredential(credential)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()) {
-
-                        Intent intent = new Intent(getApplicationContext(), InputDetails.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intent);
-
-                    } else {
-                        Toast.makeText(getApplicationContext(), Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_LONG).show();
-                    }
-                    }
-
-                });
-    }
 
 }
 
