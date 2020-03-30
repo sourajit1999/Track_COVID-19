@@ -149,7 +149,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
                 android:text="Enter relative position of Coach i.e.\'front \', \'middle\' or \'rear \'with respect to the engine, in case you dont remember the Coach no. "
-                android:padding="1dp" />
+                android:padding="1dp"
+                android:lineSpacingExtra="2dp"/>
         </LinearLayout>
         <LinearLayout
             android:id="@+id/flightdetails"
