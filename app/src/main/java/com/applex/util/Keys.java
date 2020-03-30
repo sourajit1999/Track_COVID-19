@@ -2,6 +2,30 @@ package com.applex.util;
 
 public class Keys {
 
+    public static final String contact = "Contact_No";
+    public static final String pincode = "Pincode";
+    public static final String bloodgroup = "Blood_Group";
+    public static final String from = "From";
+    public static final String to = "To";
+    public static final String departureTime = "Departure_time";
+    public static final String arrivalTime = "Arrival_time";
+
+    public static final String trainName = "Train_Name";
+    public static final String trainNo = "Train_No";
+    public static final String coachNo = "Coach_No";
+
+    public static final String flightNo = "Flight_No";
+    public static final String boardingClass = "Boarding_Class";
+
+    public static final String place = "Place";
+    public static final String date = "Date";
+    public static final String time = "Time";
+    public static final String approxGathering = "Approx_Gathering";
+
+    public static final String idSheet = "id";
+
+    public static final String sheetID = "Sheet1";
+
     //SCRIPT & SHEET IDS//
 
     public static final String Sheet1_Script_id = "https://script.google.com/macros/s/AKfycbyhJIZS1Kud2f9yfxTfCWAgzm7yziMUg7_FetHFrwTsRkwo0HY/exec";
