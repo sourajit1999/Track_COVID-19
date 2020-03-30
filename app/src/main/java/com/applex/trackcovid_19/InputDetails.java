@@ -51,11 +51,19 @@ public class InputDetails extends AppCompatActivity {
 
     EditText from,to,depart_date,depart_time,arrival_date,arrival_time;
 
-    EditText train_name,train_no,coach_no;
+    EditText train_name,train_no,coach_no; //train
 
-    EditText flight_no,boarding_class;
+    EditText flight_no,boarding_class; //flight
 
-    EditText address, date, no, time;
+    EditText address, date, no, time; //gathering
+
+    String travel_to,travel_from,travel_d_date,travel_a_date,travel_d_time,travel_a_time;
+
+    String flight_num,board_class;
+
+    String train_num, train_nam,coach_num;
+
+    String addrs, gather_date, gather_no,gather_time;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,17 +93,151 @@ public class InputDetails extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Flight
                 if(sel_ID==1){
-                    if(to.getText().toString().isEmpty()||)
+                    if(to.getText().toString().isEmpty()){
+                        to.setError("Source missing");
+                        to.requestFocus();
+                        return;
+                    }
+                    if(from.getText().toString().isEmpty()){
+                        from.setError("Destination missing");
+                        from.requestFocus();
+                        return;
+                    }
+                    if(depart_date.getText().toString().isEmpty()){
+                        depart_date.setError("Date missing");
+                        depart_date.requestFocus();
+                        return;
+                    }
+                    if(arrival_date.getText().toString().isEmpty()){
+                        arrival_date.setError("Date missing");
+                        arrival_date.requestFocus();
+                        return;
+                    }
+
+                    if(flight_no.getText().toString().isEmpty()){
+                        flight_no.setError("Flight number missing");
+                        flight_no.requestFocus();
+                        return;
+                    }
+                    if(boarding_class.getText().toString().isEmpty()){
+                        boarding_class.setError("Class type missing");
+                        boarding_class.requestFocus();
+                        return;
+                    }
+
+                    travel_to = to.getText().toString().trim();
+                    travel_from = from.getText().toString().trim();
+                    travel_d_date = depart_date.getText().toString().trim();
+                    travel_d_time = depart_time.getText().toString().trim();
+                    travel_a_date = arrival_date.getText().toString().trim();
+                    travel_a_time = arrival_time.getText().toString().trim();
+                    flight_num = to.getText().toString().trim();
+                    board_class = to.getText().toString().trim();
+
                 }
                 else if(sel_ID == 2) {
+                    if(to.getText().toString().isEmpty()){
+                        to.setError("Source missing");
+                        to.requestFocus();
+                        return;
+                    }
+                    if(from.getText().toString().isEmpty()){
+                        from.setError("Destination missing");
+                        from.requestFocus();
+                        return;
+                    }
+                    if(depart_date.getText().toString().isEmpty()){
+                        depart_date.setError("Date missing");
+                        depart_date.requestFocus();
+                        return;
+                    }
+                    if(arrival_date.getText().toString().isEmpty()){
+                        arrival_date.setError("Date missing");
+                        arrival_date.requestFocus();
+                        return;
+                    }
+
+                    if(train_name.getText().toString().isEmpty()){
+                        train_name.setError("Train name missing");
+                        train_name.requestFocus();
+                        return;
+                    }
+//                    if(train_no.getText().toString().isEmpty()){
+//                        train_no.setError("Train number missing");
+//                        train_no.requestFocus();
+//                        return;
+//                    }
+                    if(coach_no.getText().toString().isEmpty()){
+                        coach_no.setError("Coach details missing");
+                        coach_no.requestFocus();
+                        return;
+                    }
+
+                    travel_to = to.getText().toString().trim();
+                    travel_from = from.getText().toString().trim();
+                    travel_d_date = depart_date.getText().toString().trim();
+                    travel_d_time = depart_time.getText().toString().trim();
+                    travel_a_date = arrival_date.getText().toString().trim();
+                    travel_a_time = arrival_time.getText().toString().trim();
+
+                    train_nam = train_name.getText().toString().trim();
+                    train_num = train_no.getText().toString();
+                    coach_num = coach_no.getText().toString();
 
                 }
                 else if(sel_ID ==3) {
+                    if(to.getText().toString().isEmpty()){
+                        to.setError("Source missing");
+                        to.requestFocus();
+                        return;
+                    }
+                    if(from.getText().toString().isEmpty()){
+                        from.setError("Destination missing");
+                        from.requestFocus();
+                        return;
+                    }
+                    if(depart_date.getText().toString().isEmpty()){
+                        depart_date.setError("Date missing");
+                        to.requestFocus();
+                        return;
+                    }
+                    if(arrival_date.getText().toString().isEmpty()){
+                        arrival_date.setError("Date missing");
+                        to.requestFocus();
+                        return;
+                    }
 
-                }
+                    travel_to = to.getText().toString().trim();
+                    travel_from = from.getText().toString().trim();
+                    travel_d_date = depart_date.getText().toString().trim();
+                    travel_d_time = depart_time.getText().toString().trim();
+                    travel_a_date = arrival_date.getText().toString().trim();
+                    travel_a_time = arrival_time.getText().toString().trim();
+                }//BUS
+
                 else if(sel_ID ==4) {
+                    if(address.getText().toString().isEmpty()){
+                        address.setError("Address details missing");
+                        address.requestFocus();
+                        return;
+                    }
+                    if(date.getText().toString().isEmpty()){
+                        date.setError("Date missing");
+                        date.requestFocus();
+                        return;
+                    }
+                    if(time.getText().toString().isEmpty()){
+                        time.setError("Time details missing");
+                        time.requestFocus();
+                        return;
+                    }
 
+                    addrs = address.getText().toString().trim();
+                    gather_date = date.getText().toString().trim();
+                    gather_no = no.getText().toString().trim();
+                    gather_time = time.getText().toString().trim();
                 }
                 new SendRequest().execute();
             }
@@ -223,27 +365,39 @@ public class InputDetails extends AppCompatActivity {
 
 
                 if(sel_ID==1){ //flight
-                    postDataParams.put(Keys.to ,inst);
-                    postDataParams.put(Keys.from ,designation);
-                    postDataParams.put(Keys.departureTime ,email);
-                    postDataParams.put(Keys.arrivalTime ,contact);
+                    postDataParams.put(Keys.to ,travel_to);
+                    postDataParams.put(Keys.from ,travel_from);
+                    postDataParams.put(Keys.departureTime ,travel_d_time);
+                    postDataParams.put(Keys.arrivalTime ,travel_a_time);
                     postDataParams.put(Keys.source ,source);
+
+                    postDataParams.put(Keys.flightNo ,flight_num);
+                    postDataParams.put(Keys.boardingClass ,board_class);
                 }
                 else if(sel_ID == 2) { //train
+                    postDataParams.put(Keys.to ,travel_to);
+                    postDataParams.put(Keys.from ,travel_from);
+                    postDataParams.put(Keys.departureTime ,travel_d_time);
+                    postDataParams.put(Keys.arrivalTime ,travel_a_time);
 
+                    postDataParams.put(Keys.coachNo ,coach_num);
+                    postDataParams.put(Keys.trainName ,train_nam);
+                    postDataParams.put(Keys.trainNo ,train_num);
                 }
                 else if(sel_ID ==3) { //bus
-
+                    postDataParams.put(Keys.to ,travel_to);
+                    postDataParams.put(Keys.from ,travel_from);
+                    postDataParams.put(Keys.departureTime ,travel_d_time);
+                    postDataParams.put(Keys.arrivalTime ,travel_a_time);
                 }
                 else if(sel_ID ==4) { //gathering
 
                 }
-                postDataParams.put(Keys.name ,name);
-                postDataParams.put(Keys.institution ,inst);
-                postDataParams.put(Keys.designation ,designation);
-                postDataParams.put(Keys.email ,email);
-                postDataParams.put(Keys.contact ,contact);
-                postDataParams.put(Keys.source ,source);
+                postDataParams.put(Keys.approxGathering ,gather_no);
+                postDataParams.put(Keys.date ,gather_date);
+                postDataParams.put(Keys.place ,addrs);
+                postDataParams.put(Keys.time ,gather_time);
+
 
                 //INSERT SHEET ID
                 postDataParams.put(Keys.idSheet ,id);
