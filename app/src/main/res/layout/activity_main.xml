@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+
         android:gravity="center_vertical">
 
         <Spinner
@@ -30,18 +31,18 @@
             <EditText
                 android:id="@+id/phone"
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:maxLength="10"
                 android:digits="0123456789"
                 android:background="@android:color/white"
                 android:hint="Phone No."
                 android:inputType="phone"
-                android:paddingStart="18dp"
-                android:paddingEnd="10dp"
+                android:padding="12dp"
                 android:textSize="18sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
 
     </LinearLayout>
 
@@ -66,11 +67,35 @@
             android:digits="0123456789"
             android:maxLength="6"
             android:background="@android:color/white"
-            android:paddingStart="18dp"
-            android:paddingEnd="10dp"
+            android:padding="12dp"
             android:textSize="18sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/field_layout"
+        android:layout_margin="10dp"
+        android:padding="12dp"
+        android:gravity="center">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Blood Group :"
+        android:textSize="18sp"
+        android:textColor="#212121"
+        android:layout_margin="10dp" />
+
+    <Spinner
+        android:id="@+id/spinnerBlood"
+        android:layout_width="wrap_content"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:spinnerMode="dropdown"
+        android:entries="@array/Spinner_blood"/>
+    </LinearLayout>
 
 
     <Button
