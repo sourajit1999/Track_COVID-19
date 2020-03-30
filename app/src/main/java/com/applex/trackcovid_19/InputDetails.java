@@ -9,6 +9,6 @@ public class InputDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_input_details);
+        setContentView(R.layout.element_recyclerview);
     }
 }

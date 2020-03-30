@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
         public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
             String code = phoneAuthCredential.getSmsCode();
             if (code != null){
-                mydialogue.dismiss();
+             //   mydialogue.dismiss();
 //                progressBar.setVisibility(View.VISIBLE);
                 verifyCode(code);
             }
