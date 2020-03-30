@@ -35,6 +35,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <EditText
+                        android:id="@+id/from_travel"
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
                         android:background="@drawable/field_layout"
@@ -44,6 +45,7 @@
                         android:layout_weight="1"
                         android:textAlignment="center"/>
                     <EditText
+                        android:id="@+id/to_travel"
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
                         android:background="@drawable/field_layout"
@@ -57,6 +59,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <EditText
+                        android:id="@+id/depart_date_travel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="20dp"
@@ -65,6 +68,7 @@
                         android:layout_weight="1"
                         android:textAlignment="center"/>
                     <EditText
+                        android:id="@+id/arrival_date_travel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="20dp"
@@ -77,6 +81,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <EditText
+                        android:id="@+id/depart_time_travel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="20dp"
@@ -85,6 +90,7 @@
                         android:layout_weight="1"
                         android:textAlignment="center"/>
                     <EditText
+                        android:id="@+id/arrival_time_travel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="20dp"
@@ -117,6 +123,7 @@
                 android:layout_marginHorizontal="20dp"/>
 
                 <EditText
+                    android:id="@+id/train_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
@@ -124,12 +131,14 @@
                     android:padding="10dp"
                     android:layout_marginTop="10dp"/>
                 <EditText
+                    android:id="@+id/train_no"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
                     android:hint="Enter Train No."
                     android:padding="10dp"/>
                 <EditText
+                    android:id="@+id/coach_no"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
@@ -159,6 +168,7 @@
                 android:layout_marginHorizontal="20dp"/>
 
             <EditText
+                android:id="@+id/flight_no"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
@@ -166,6 +176,7 @@
                 android:layout_marginTop="10dp"
                 android:padding="10dp"/>
             <EditText
+                android:id="@+id/flight_boarding"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
@@ -196,6 +207,7 @@
                 android:layout_marginHorizontal="20dp"/>
 
             <EditText
+                android:id="@+id/address_gather"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
@@ -204,6 +216,7 @@
                 android:padding="10dp"
                 android:layout_marginTop="10dp"/>
             <EditText
+                android:id="@+id/date_gather"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
@@ -211,6 +224,7 @@
                 android:layout_weight="1"
                 android:padding="10dp"/>
             <EditText
+                android:id="@+id/time_gather"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
@@ -218,6 +232,7 @@
                 android:layout_weight="1"
                 android:padding="10dp" />
             <EditText
+                android:id="@+id/no_gather"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
