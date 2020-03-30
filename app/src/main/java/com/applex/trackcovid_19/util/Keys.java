@@ -1,4 +1,4 @@
-package com.applex.util;
+package com.applex.trackcovid_19.util;
 
 public class Keys {
 

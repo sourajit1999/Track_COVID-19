@@ -23,6 +23,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import static java.lang.Boolean.FALSE;
@@ -48,6 +49,13 @@ public class MainActivity extends AppCompatActivity {
 
         mPhoneNo = findViewById(R.id.phone);
 
+        mydialogue = new Dialog(MainActivity.this);
+
+        mydialogue.setContentView(R.layout.jumping_panda_progress);
+        mydialogue.setCanceledOnTouchOutside(FALSE);
+        mydialogue.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+
         findViewById(R.id.buttonContinue).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 String phonenumber = "+" + code + number;
+                mydialogue.show();
                 sendVerificationCode(phonenumber);
-
             }
         });
 
@@ -71,20 +79,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-//    private void showDialog(){
-//        mydialogue = new Dialog(MainActivity.this);
-//
-//        mydialogue.setContentView(R.layout.jumping_panda_progress);
-//        mydialogue.setCanceledOnTouchOutside(FALSE);
-//        mydialogue.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//
-//        EditText otp;
-//        otp = mydialogue.findViewById(R.id.otp);
-//        otp.getText().
-//
-//        mydialogue.show();
-//
-//    }
+
+
+
 
     @Override
     protected void onStart() {
@@ -121,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
         public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
             String code = phoneAuthCredential.getSmsCode();
             if (code != null){
-             //   mydialogue.dismiss();
+                mydialogue.dismiss();
 //                progressBar.setVisibility(View.VISIBLE);
                 verifyCode(code);
             }
@@ -147,23 +144,19 @@ public class MainActivity extends AppCompatActivity {
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
+                    if (task.isSuccessful()) {
 
-                            Intent intent = new Intent(getApplicationContext(), InputDetails.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        Intent intent = new Intent(getApplicationContext(), InputDetails.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
 
-                            startActivity(intent);
-
-                        } else {
-                            Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                        }
+                    } else {
+                        Toast.makeText(getApplicationContext(), Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_LONG).show();
+                    }
                     }
 
                 });
     }
-
-
-
 
 }
 

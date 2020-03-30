@@ -13,22 +13,30 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Enter OTP :"
-        android:textSize="25dp"
+        android:text="Waiting for your OTP :"
+        android:textSize="25sp"
         android:textColor="#212121"
-        android:padding="10dp"/>
-
-    <EditText
-        android:id="@+id/otp"
-        android:paddingTop="10dp"
+        android:padding="5dp"/>
+    <LinearLayout
         android:layout_width="match_parent"
-        android:textSize="15sp"
-        android:padding="15dp"
-        android:maxLength="6"
-        android:inputType="number"
-        android:textColor="@color/colorAccent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        />
+        android:gravity="center"
+        android:padding="5dp">
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Please don't press back"
+        android:textSize="15sp"
+        android:padding="10dp"/>
+    </LinearLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="fitCenter"
+        android:src="17801-stay-at-home.json"/>
 
 </LinearLayout>
