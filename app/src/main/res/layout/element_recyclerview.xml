@@ -127,7 +127,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="20dp"
-                    android:hint="Enter Train No."
+                    android:hint="Enter Train No.(Optional)"
                     android:padding="10dp"/>
                 <EditText
                     android:layout_width="match_parent"
@@ -135,6 +135,12 @@
                     android:layout_marginHorizontal="20dp"
                     android:hint="Enter Coach No."
                     android:padding="10dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:text="Enter relative position of Coach i.e.\'front \', \'middle\' or \'rear \'with respect to the engine, in case you dont remember the Coach no. "
+                android:padding="1dp" />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/flightdetails"
