@@ -178,7 +178,7 @@ public class InputDetails extends AppCompatActivity {
                 postDataParams.put(Keys.source ,source);
 
                 //INSERT SHEET ID
-                postDataParams.put(Keys.idSheet ,Keys.central_Sheet_id);
+                postDataParams.put(Keys.idSheet ,id);
 
 
                 Log.e("params",postDataParams.toString());
@@ -229,7 +229,7 @@ public class InputDetails extends AppCompatActivity {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
             mydialogue.dismiss();
-            Intent intent = new Intent(RegistrationFormPost.this, HomeActivity.class);
+            Intent intent = new Intent(InputDetails.this, SuccessActivity.class);
             intent.putExtra("value","submit");
             intent.putExtra("name",name);
             intent.putExtra("email",email);
