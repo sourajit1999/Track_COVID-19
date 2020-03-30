@@ -9,6 +9,9 @@ public class Keys {
     public static final String to = "To";
     public static final String departureTime = "Departure_time";
     public static final String arrivalTime = "Arrival_time";
+    public static final String departuredate = "Departure_Date";
+    public static final String arrivaldate = "Arrival_Date";
+
 
     public static final String trainName = "Train_Name";
     public static final String trainNo = "Train_No";

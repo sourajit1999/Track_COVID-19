@@ -49,6 +49,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
     private EditText mPhoneNo;
     private EditText mPinCode;
     private Spinner mSpinnerBlood;
+    Button twitter;
 
     Dialog mydialogue;
     String verificationid;
@@ -59,6 +60,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         setContentView(R.layout.activity_home_page);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        twitter = findViewById(R.id.twitterbtn);
 
         mSpinner = findViewById(R.id.spinnerCountries);
         mSpinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, CountryData.countryNames));
@@ -97,6 +99,20 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         });
 
 
+        twitter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(HomePage.this,MainActivity.class);
+                startActivity(i);
+            }
+        });
+
+
+
+
+
+
+        //////////DRAWER////////////////////
 
 //        FloatingActionButton fab = findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
@@ -124,6 +140,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
             }
         });
     }
+    //////////DRAWER////////////////////
 
     /////////////////SEND NO FOR VERIFICATION/////////////
     private void sendVerificationCode(String number){
