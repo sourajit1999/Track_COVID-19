@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".SuccessActivity">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:src="1708-success.json"
+        app:lottie_loop="false"
+        android:scaleType="fitCenter"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Was there another gathering you attended?"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:textSize="18sp"/>
+    <Button
+        android:id="@+id/add"
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add another Gathering"
+        android:textAllCaps="false"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        android:padding="8dp"
+        android:background="@drawable/background_tab"/>
+
+    <TextView
+        android:id="@+id/home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="15sp"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="18sp"
+        android:paddingStart="10dp"
+        android:drawableRight="@drawable/ic_chevron_right_black_24dp"
+
+        android:text="Continue to home page"/>
+</LinearLayout>

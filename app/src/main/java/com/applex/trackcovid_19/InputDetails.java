@@ -10,6 +10,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.applex.trackcovid_19.util.Keys;
 
@@ -33,15 +35,40 @@ public class InputDetails extends AppCompatActivity {
 
     Dialog mydialogue;
     int sel_ID = 0;
+    String id;
+    String urlLink= null;
 
+    LinearLayout gathering;
+    LinearLayout flight;
+    LinearLayout train;
+    LinearLayout travel;
+    Button submit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.element_recyclerview);
 
-        mydialogue = new Dialog(InputDetails.this);
+        setDialog();
+        travel = findViewById(R.id.traveldetails);
+        train = findViewById(R.id.traveldetails);
+        flight = findViewById(R.id.traveldetails);
+        gathering = findViewById(R.id.traveldetails);
 
+        submit = findViewById(R.id.submit);
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new SendRequest().execute();
+            }
+        });
+
+
+    }
+
+
+    private void setDialog(){
+        mydialogue = new Dialog(InputDetails.this);
         mydialogue.setContentView(R.layout.select_dialog);
         mydialogue.setCanceledOnTouchOutside(FALSE);
         mydialogue.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -50,37 +77,88 @@ public class InputDetails extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 sel_ID = 1;
+                customize();
+                mydialogue.dismiss();
             }
         });
         mydialogue.findViewById(R.id.train).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sel_ID = 2;
+                customize();
+                mydialogue.dismiss();
             }
         });
         mydialogue.findViewById(R.id.bus).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sel_ID = 3;
+                customize();
+                mydialogue.dismiss();
             }
         });
         mydialogue.findViewById(R.id.gathering).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sel_ID = 4;
+                customize();
+                mydialogue.dismiss();
             }
         });
+        mydialogue.show();
+    }
 
+    private void customize(){
 
+        if(sel_ID==1){
+            urlLink = Keys.Sheet1_Script_id;
+            id = Keys.Sheet1_Sheet_id;
+
+            travel.setVisibility(View.VISIBLE);
+            flight.setVisibility(View.VISIBLE);
+            train.setVisibility(View.GONE);
+            gathering.setVisibility(View.GONE);
+        }
+        else if(sel_ID == 2) {
+            urlLink = Keys.Sheet2_Script_id;
+            id = Keys.Sheet2_Sheet_id;
+
+            travel.setVisibility(View.VISIBLE);
+            flight.setVisibility(View.GONE);
+            train.setVisibility(View.VISIBLE);
+            gathering.setVisibility(View.GONE);
+        }
+        else if(sel_ID ==3) {
+            urlLink = Keys.Sheet3_Script_id;
+            id = Keys.Sheet3_Sheet_id;
+
+            travel.setVisibility(View.VISIBLE);
+            flight.setVisibility(View.GONE);
+            train.setVisibility(View.GONE);
+            gathering.setVisibility(View.GONE);
+        }
+        else if(sel_ID ==4) {
+            urlLink = Keys.Sheet4_Script_id;
+            id = Keys.Sheet4_Sheet_id;
+
+            travel.setVisibility(View.GONE);
+            flight.setVisibility(View.GONE);
+            train.setVisibility(View.GONE);
+            gathering.setVisibility(View.VISIBLE);
+        }
     }
 
     public class SendRequest extends AsyncTask<String, Void, String> {
 
-        URL url = new URL(Keys.central_Script_id);
-
         protected void onPreExecute(){
             super.onPreExecute();
+            ////////////SELECT SHEET////////////
 
+            ////////////SELECT SHEET////////////
+            mydialogue = new Dialog(InputDetails.this);
+            mydialogue.setContentView(R.layout.select_dialog);
+            mydialogue.setCanceledOnTouchOutside(FALSE);
+            mydialogue.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         }
 
@@ -88,6 +166,7 @@ public class InputDetails extends AppCompatActivity {
 
             try{
                 //INSERT SCRIPT URL
+                URL url = new URL(urlLink);
 
                 JSONObject postDataParams = new JSONObject();
 

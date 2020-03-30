@@ -7,12 +7,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <LinearLayout
-            android:id="@+id/traveldetails"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/traveldetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <TextView
+        android:id="@+id/add_option"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="ADD TRAVEL HISTORY"
@@ -225,6 +227,7 @@
         </LinearLayout>
 
         <Button
+            android:id="@+id/submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="SUBMIT"
