@@ -85,6 +85,18 @@ public class InputDetails extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(sel_ID==1){
+                    if(to.getText().toString().isEmpty()||)
+                }
+                else if(sel_ID == 2) {
+
+                }
+                else if(sel_ID ==3) {
+
+                }
+                else if(sel_ID ==4) {
+
+                }
                 new SendRequest().execute();
             }
         });
