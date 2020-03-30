@@ -7,6 +7,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/traveldetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,11 +28,7 @@
             android:layout_height="2dp"
             android:background="#0091EA"
             android:layout_marginHorizontal="20dp"/>
-        <LinearLayout
-            android:id="@+id/traveldetails"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -160,7 +161,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
                 android:hint="Enter Flight No."
-                android:layout_weight="1"
+                android:layout_marginTop="10dp"
                 android:padding="10dp"/>
             <EditText
                 android:layout_width="match_parent"
@@ -218,10 +219,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"
-                android:hint="Enter Approximate people gathered"
+                android:hint="Approximate people gathered"
                 android:layout_weight="1"
                 android:padding="10dp" />
         </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SUBMIT"
+            android:padding="20dp"
+            android:layout_margin="40dp"
+            android:fontFamily="monospace"
+            android:textSize="18dp"/>
+
 
 
     </LinearLayout>
