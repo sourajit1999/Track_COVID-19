@@ -86,9 +86,9 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
                     mPhoneNo.requestFocus();
                     return;
                 }
-                if (mPinCode.getText().toString().isEmpty() || number.length() < 16) {
-                    mPhoneNo.setError("Valid pin code is required");
-                    mPhoneNo.requestFocus();
+                if (mPinCode.getText().toString().isEmpty() || number.length() < 6) {
+                    mPinCode.setError("Valid pin code is required");
+                    mPinCode.requestFocus();
                     return;
                 }
 

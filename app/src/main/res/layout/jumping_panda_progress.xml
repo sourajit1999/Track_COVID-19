@@ -37,6 +37,8 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:scaleType="fitCenter"
-        android:src="17801-stay-at-home.json"/>
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="17801-stay-at-home.json"/>
 
 </LinearLayout>

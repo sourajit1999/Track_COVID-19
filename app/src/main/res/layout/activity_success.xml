@@ -11,8 +11,9 @@
     <com.airbnb.lottie.LottieAnimationView
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:src="1708-success.json"
-        app:lottie_loop="false"
+        app:lottie_fileName="1708-success.json"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"
         android:scaleType="fitCenter"/>
     <TextView
         android:layout_width="match_parent"
