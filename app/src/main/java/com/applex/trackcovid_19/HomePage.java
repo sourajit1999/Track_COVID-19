@@ -64,14 +64,15 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         mSpinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, CountryData.countryNames));
 
         mPhoneNo = findViewById(R.id.phone);
-
+        mPinCode = findViewById(R.id.pin_code);
+        mSpinnerBlood = findViewById(R.id.spinnerBlood);
         mydialogue = new Dialog(HomePage.this);
 
         mydialogue.setContentView(R.layout.jumping_panda_progress);
         mydialogue.setCanceledOnTouchOutside(FALSE);
         mydialogue.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-        findViewById(R.id.buttonContinue).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.otp).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String code = CountryData.countryAreaCodes[mSpinner.getSelectedItemPosition()];
@@ -80,6 +81,11 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
                 if (number.isEmpty() || number.length() < 10) {
                     mPhoneNo.setError("Valid number is required");
+                    mPhoneNo.requestFocus();
+                    return;
+                }
+                if (mPinCode.getText().toString().isEmpty() || number.length() < 16) {
+                    mPhoneNo.setError("Valid pin code is required");
                     mPhoneNo.requestFocus();
                     return;
                 }
@@ -92,14 +98,14 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
 
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
@@ -128,7 +134,8 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
                 TaskExecutors.MAIN_THREAD,
                 mCallBack
         );
-    }private PhoneAuthProvider.OnVerificationStateChangedCallbacks
+    }
+    private PhoneAuthProvider.OnVerificationStateChangedCallbacks
             mCallBack = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
         @Override
@@ -169,6 +176,9 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
                             Intent intent = new Intent(getApplicationContext(), InputDetails.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            intent.putExtra("bloodgroup",mSpinnerBlood.getSelectedItem().toString());
+                            intent.putExtra("pincode",mPinCode.getText().toString().trim());
+                            intent.putExtra("phone",mPhoneNo.getText().toString().trim());
                             startActivity(intent);
 
                         } else {
@@ -178,6 +188,8 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
                 });
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

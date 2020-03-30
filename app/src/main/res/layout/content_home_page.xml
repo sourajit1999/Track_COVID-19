@@ -48,11 +48,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Select Country"
+                    android:gravity="center"
                     android:padding="10dp"/>
             <Spinner
                 android:id="@+id/spinnerCountries"
                 android:layout_width="150dp"
                 android:layout_margin="10dp"
+                android:gravity="center"
                 android:layout_height="wrap_content" />
             </LinearLayout>
 
@@ -72,7 +74,6 @@
                     android:digits="0123456789"
                     android:background="@android:color/white"
                     android:hint="Phone No."
-                    android:inputType="phone"
                     android:padding="12dp"
                     android:textSize="18sp" />
 
@@ -134,7 +135,7 @@
 
 
         <Button
-            android:id="@+id/buttonContinue"
+            android:id="@+id/otp"
             android:layout_width="183dp"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"

@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.applex.trackcovid_19.util.Keys;
@@ -26,10 +27,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Iterator;
+import java.util.Objects;
 
 import javax.net.ssl.HttpsURLConnection;
 
 import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.logicalAnd;
 
 public class InputDetails extends AppCompatActivity {
 
@@ -38,22 +41,45 @@ public class InputDetails extends AppCompatActivity {
     String id;
     String urlLink= null;
 
+    String phone, bloodgroup, pincode;
+
     LinearLayout gathering;
     LinearLayout flight;
     LinearLayout train;
     LinearLayout travel;
     Button submit;
 
+    EditText from,to,depart_date,depart_time,arrival_date,arrival_time;
+
+    EditText train_name,train_no,coach_no;
+
+    EditText flight_no,boarding_class;
+
+    EditText address, date, no, time;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.element_recyclerview);
 
-        setDialog();
-        travel = findViewById(R.id.traveldetails);
-        train = findViewById(R.id.traveldetails);
-        flight = findViewById(R.id.traveldetails);
-        gathering = findViewById(R.id.traveldetails);
+        from = findViewById(R.id.from_travel);
+        to = findViewById(R.id.to_travel);
+        depart_date = findViewById(R.id.depart_date_travel);
+        depart_time = findViewById(R.id.depart_time_travel);
+        arrival_date = findViewById(R.id.arrival_date_travel);
+        arrival_time = findViewById(R.id.arrival_time_travel);
+
+        train_name = findViewById(R.id.train_name);
+        train_no = findViewById(R.id.train_no);
+        coach_no = findViewById(R.id.coach_no);
+
+        flight_no = findViewById(R.id.flight_no);
+        boarding_class = findViewById(R.id.flight_boarding);
+
+        address = findViewById(R.id.address_gather);
+        date = findViewById(R.id.date_gather);
+        no = findViewById(R.id.no_gather);
+        time = findViewById(R.id.time_gather);
 
         submit = findViewById(R.id.submit);
         submit.setOnClickListener(new View.OnClickListener() {
@@ -63,15 +89,20 @@ public class InputDetails extends AppCompatActivity {
             }
         });
 
+        Intent i = getIntent();
+        phone = i.getStringExtra("phone");
+        pincode = i.getStringExtra("pincode");
+        bloodgroup = i.getStringExtra("bloodgroup");
+
+        setDialog();
 
     }
-
 
     private void setDialog(){
         mydialogue = new Dialog(InputDetails.this);
         mydialogue.setContentView(R.layout.select_dialog);
         mydialogue.setCanceledOnTouchOutside(FALSE);
-        mydialogue.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        Objects.requireNonNull(mydialogue.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         mydialogue.findViewById(R.id.flight).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,6 +140,10 @@ public class InputDetails extends AppCompatActivity {
     }
 
     private void customize(){
+        travel = findViewById(R.id.traveldetails);
+        train = findViewById(R.id.traveldetails);
+        flight = findViewById(R.id.traveldetails);
+        gathering = findViewById(R.id.traveldetails);
 
         if(sel_ID==1){
             urlLink = Keys.Sheet1_Script_id;
@@ -170,6 +205,27 @@ public class InputDetails extends AppCompatActivity {
 
                 JSONObject postDataParams = new JSONObject();
 
+                postDataParams.put(Keys.contact ,phone);
+                postDataParams.put(Keys.pincode ,pincode);
+                postDataParams.put(Keys.bloodgroup ,bloodgroup);
+
+
+                if(sel_ID==1){ //flight
+                    postDataParams.put(Keys.to ,inst);
+                    postDataParams.put(Keys.from ,designation);
+                    postDataParams.put(Keys.departureTime ,email);
+                    postDataParams.put(Keys.arrivalTime ,contact);
+                    postDataParams.put(Keys.source ,source);
+                }
+                else if(sel_ID == 2) { //train
+
+                }
+                else if(sel_ID ==3) { //bus
+
+                }
+                else if(sel_ID ==4) { //gathering
+
+                }
                 postDataParams.put(Keys.name ,name);
                 postDataParams.put(Keys.institution ,inst);
                 postDataParams.put(Keys.designation ,designation);
