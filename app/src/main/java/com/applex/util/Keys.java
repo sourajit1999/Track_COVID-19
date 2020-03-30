@@ -2,47 +2,6 @@ package com.applex.util;
 
 public class Keys {
 
-    //PERSONAL DETAILS//
-
-    public static final String name = "Name";
-    public static final String institution = "Institution";
-    public static final String designation = "Designation";
-    public static final String email = "email";
-    public static final String contact = "Contact_No";
-    public static final String source = "Source_of_Information";
-    public static final String participant_id = "Participant_Id";
-    public static final String idSheet = "id";
-
-    public static final String sheetID = "Sheet1";
-    //PERSONAL DETAILS//
-
-    //FIREBASE STORAGE//
-
-//    public static final String firebaseHomeRef = "gs://innovacion-b8c51.appspot.com/";
-
-    //FIREBASE STORAGE//
-
-    //TEAM DETAILS//
-    public static final String teamname = "teamname";
-    public static final String idcap = "idcap";
-    public static final String id1 = "id1";
-    public static final String id2 = "id2";
-    public static final String id3 = "id3";
-    public static final String id4 = "id4";
-    //TEAM DETAILS//
-
-
-    //FETCH TEAM DETAILS//
-
-    public static final String teamId = "Team_ID";
-    public static final String eventTeamName = "Team_Name";
-    public static final String eventEmail = "Email";
-
-
-    //FETCH TEAM DETAILS//
-
-
-
     //SCRIPT & SHEET IDS//
 
     public static final String Sheet1_Script_id = "https://script.google.com/macros/s/AKfycbyhJIZS1Kud2f9yfxTfCWAgzm7yziMUg7_FetHFrwTsRkwo0HY/exec";
@@ -54,5 +13,7 @@ public class Keys {
     public static final String Sheet3_Script_id = "https://script.google.com/macros/s/AKfycbyskjQOOSHLHuASh8er1SsZB3zGupMbtfFKfaGZyLL69GsTi9c/exec";
     public static final String Sheet3_Sheet_id = "1H4rtt5S3vXi-BDiCzGi5QKENJzKaLfgWC-CAVQgEhVE";
 
+    public static final String Sheet4_Script_id = "https://script.google.com/macros/s/AKfycbw5Q9vOjJU0__5MLAU4wqott9rRM7tlpfHmQqUn-Zr1ZijCqYo/exec";
+    public static final String Sheet4_Sheet_id = "1f5eX5L3a5Xb4Vi5amFH2d0hFgqWa-suHfh_m5XAjzTc";
 
 }
