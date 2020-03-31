@@ -2,6 +2,7 @@ package com.applex.trackcovid_19;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.applex.trackcovid_19.util.Keys;
 
@@ -69,6 +71,11 @@ public class InputDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.element_recyclerview);
+
+        travel = findViewById(R.id.traveldetails);
+        train = findViewById(R.id.traveldetails);
+        flight = findViewById(R.id.traveldetails);
+        gathering = findViewById(R.id.traveldetails);
 
         from = findViewById(R.id.from_travel);
         to = findViewById(R.id.to_travel);
@@ -287,6 +294,10 @@ public class InputDetails extends AppCompatActivity {
             public void onClick(View v) {
                 sel_ID = 4;
                 customize();
+                travel.setVisibility(View.GONE);
+                flight.setVisibility(View.GONE);
+                train.setVisibility(View.GONE);
+                gathering.setVisibility(View.VISIBLE);
                 mydialogue.dismiss();
             }
         });
@@ -294,16 +305,14 @@ public class InputDetails extends AppCompatActivity {
     }
 
     private void customize(){
-        travel = findViewById(R.id.traveldetails);
-        train = findViewById(R.id.traveldetails);
-        flight = findViewById(R.id.traveldetails);
-        gathering = findViewById(R.id.traveldetails);
+
 
         if(sel_ID==1){
+            Toast.makeText(getApplicationContext(),"flight",Toast.LENGTH_SHORT).show();
             urlLink = Keys.Sheet1_Script_id;
             id = Keys.Sheet1_Sheet_id;
 
-            travel.setVisibility(View.VISIBLE);
+            travel.setVisibility(View.GONE);
             flight.setVisibility(View.VISIBLE);
             train.setVisibility(View.GONE);
             gathering.setVisibility(View.GONE);
@@ -337,6 +346,7 @@ public class InputDetails extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("StaticFieldLeak")
     public class SendRequest extends AsyncTask<String, Void, String> {
 
         protected void onPreExecute(){

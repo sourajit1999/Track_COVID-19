@@ -7,7 +7,7 @@
     android:layout_marginEnd="10dp"
     android:layout_height="wrap_content"
     android:background="@drawable/dialog_bg"
-    android:padding="40dp"
+    android:padding="15dp"
     android:gravity="center">
 
     <TextView
@@ -15,8 +15,10 @@
         android:layout_height="wrap_content"
         android:text="Select form of gathering :"
         android:textSize="25sp"
+        android:gravity="center"
+        android:paddingTop="15sp"
         android:textColor="#212121"
-        android:padding="5dp"/>
+        android:paddingHorizontal="5dp"/>
 <!--    <LinearLayout-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content"-->
@@ -43,9 +45,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:text="Travel"
-        android:layout_marginTop="10dp"
+    android:layout_marginTop="10dp"
     android:textSize="20sp"
-    android:padding="8dp"/>
+    android:padding="10dp"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -112,7 +114,7 @@
         android:layout_height="wrap_content"
         android:text="Gathering"
         android:textSize="20sp"
-        android:padding="8dp"
+        android:padding="10dp"
         android:layout_marginTop="10dp"/>
     <LinearLayout
         android:layout_width="match_parent"

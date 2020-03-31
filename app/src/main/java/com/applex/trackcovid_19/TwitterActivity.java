@@ -34,7 +34,7 @@ import java.util.concurrent.TimeUnit;
 
 import static java.lang.Boolean.FALSE;
 
-public class MainActivity extends AppCompatActivity {
+public class TwitterActivity extends AppCompatActivity {
     private WebView webView;
     ProgressBar progressBar;
     Button who;

@@ -1,29 +1,22 @@
 package com.applex.trackcovid_19;
 
-import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.TaskExecutors;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
@@ -94,7 +87,14 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
                 String phonenumber = "+" + code + number;
                 mydialogue.show();
-                sendVerificationCode(phonenumber);
+//                sendVerificationCode(phonenumber);
+
+                Intent intent = new Intent(getApplicationContext(), InputDetails.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.putExtra("bloodgroup",mSpinnerBlood.getSelectedItem().toString());
+                intent.putExtra("pincode",mPinCode.getText().toString().trim());
+                intent.putExtra("phone",mPhoneNo.getText().toString().trim());
+                startActivity(intent);
             }
         });
 
@@ -102,7 +102,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         twitter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(HomePage.this,MainActivity.class);
+                Intent i=new Intent(HomePage.this, TwitterActivity.class);
                 startActivity(i);
             }
         });
@@ -125,7 +125,6 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
-        Menu menu = navigationView.getMenu();
         navigationView.setItemIconTintList(null);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -136,7 +135,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         findViewById(R.id.details).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomePage.this,MainActivity.class));
+                startActivity(new Intent(HomePage.this, TwitterActivity.class));
             }
         });
     }
@@ -190,7 +189,6 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-
                             Intent intent = new Intent(getApplicationContext(), InputDetails.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             intent.putExtra("bloodgroup",mSpinnerBlood.getSelectedItem().toString());
@@ -220,7 +218,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
         if (id == R.id.nav_twitter) {
             // Handle the camera action
-            Intent intent=new Intent(HomePage.this,MainActivity.class);
+            Intent intent=new Intent(HomePage.this, TwitterActivity.class);
             startActivity(intent);
         }
 
