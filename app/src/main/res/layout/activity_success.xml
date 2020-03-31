@@ -8,26 +8,43 @@
     android:orientation="vertical"
     tools:context=".SuccessActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Thank you for saving lives!"
+            android:textSize="25dp"
+            android:textColor="#212121" />
+
+    </LinearLayout>
     <com.airbnb.lottie.LottieAnimationView
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="200dp"
+        android:padding="10dp"
         app:lottie_fileName="1708-success.json"
-        app:lottie_loop="true"
+        app:lottie_loop="false"
         app:lottie_autoPlay="true"
         android:scaleType="fitCenter"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Was there another gathering you attended?"
         android:gravity="center"
         android:layout_marginTop="10dp"
+        android:paddingHorizontal="10dp"
         android:textSize="18sp"/>
     <Button
         android:id="@+id/add"
         android:layout_margin="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add another Gathering"
+        android:text=" Add Details "
         android:textAllCaps="false"
         android:textColor="#fff"
         android:textSize="18sp"

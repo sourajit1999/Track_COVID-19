@@ -2,11 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.applex.trackcovid_19">
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
-
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -15,11 +14,13 @@
         android:roundIcon="@drawable/trackcovid"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login"></activity>
         <activity
             android:name=".Splash"
-            android:theme="@style/SplashTheme"
             android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme"
             tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,27 +28,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".InputDetails" />
+        <activity android:name=".SuccessActivity" >
 
-        <activity android:name=".InputDetails"></activity>
-        <activity android:name=".SuccessActivity"></activity>
-
+        </activity>
         <activity
             android:name=".HomePage"
             android:label="@string/title_activity_home_page"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-
-        <activity android:name=".TwitterActivity">
-
-        </activity>
-<!--        <activity android:name=".Splash"-->
-<!--            android:theme="@style/AppTheme.NoActionBar">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
-
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".TwitterActivity"></activity>
     </application>
 
 </manifest>

@@ -96,7 +96,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
                     mPinCode.requestFocus();
                     return;
                 }
-                if(FirebaseAuth.getInstance() != null){
+                if(FirebaseAuth.getInstance().getCurrentUser() != null){
                     if(number.matches(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber().replace("+91",""))){
                         Intent intent = new Intent(getApplicationContext(), InputDetails.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -237,9 +237,9 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
             Intent intent=new Intent(HomePage.this, TwitterActivity.class);
             startActivity(intent);
         }
-        if (id == R.id.nav_twitter) {
+        if (id == R.id.nav_login) {
             // Handle the camera action
-            Intent intent=new Intent(HomePage.this, TwitterActivity.class);
+            Intent intent=new Intent(HomePage.this, LoginActivity.class);
             startActivity(intent);
         }
 
