@@ -106,14 +106,13 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
                         startActivity(intent);
                     }
                     else {
+                        FirebaseAuth.getInstance().signOut();
                         String phoneNumber = code + number;
                         myDialogue.show();
                         sendVerificationCode(phoneNumber);
                     }
                 }
                 else {
-                    if(FirebaseAuth.getInstance()!= null)
-                        FirebaseAuth.getInstance().signOut();
                     String phoneNumber = code + number;
                     myDialogue.show();
                     sendVerificationCode(phoneNumber);

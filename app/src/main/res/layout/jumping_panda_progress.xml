@@ -68,7 +68,6 @@
             android:inputType="number"
             android:maxLength="6"
             android:fontFamily="monospace"
-            android:text="abc"
             android:digits="0123456789"
             android:textSize="20dp"
             android:padding="5dp"/>
