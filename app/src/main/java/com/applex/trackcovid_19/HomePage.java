@@ -39,7 +39,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
 //    private Spinner mSpinner;
     private EditText mPhoneNo,mCode;
-    private EditText mPinCode,mOtp;
+    private EditText mPinCode;
     private Spinner mSpinnerBlood;
     Button twitter;
 
@@ -59,7 +59,6 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 //        mSpinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, CountryData.countryNames));
 
         mCode = findViewById(R.id.code);
-        mOtp = findViewById(R.id.otp);
         mPhoneNo = findViewById(R.id.phone);
         mPinCode = findViewById(R.id.pin_code);
         mSpinnerBlood = findViewById(R.id.spinnerBlood);
@@ -70,7 +69,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         myDialogue.findViewById(R.id.verify).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText et = findViewById(R.id.otp);
+                EditText et = myDialogue.findViewById(R.id.otp);
                 if(et.getText().toString().length()==6){
                     verifyCode(et.getText().toString());
                 }
@@ -226,6 +225,11 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         int id = menuItem.getItemId();
 
+        if (id == R.id.nav_twitter) {
+            // Handle the camera action
+            Intent intent=new Intent(HomePage.this, TwitterActivity.class);
+            startActivity(intent);
+        }
         if (id == R.id.nav_twitter) {
             // Handle the camera action
             Intent intent=new Intent(HomePage.this, TwitterActivity.class);
