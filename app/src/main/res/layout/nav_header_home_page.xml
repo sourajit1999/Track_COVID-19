@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/nav_header_height"
+    android:layout_height="200dp"
     android:background="@drawable/side_nav_bar"
     android:gravity="bottom"
     android:orientation="vertical"
@@ -18,9 +18,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="TRACK COVID-19"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:fontFamily="monospace"
+        android:textSize="25dp"
         android:padding="4dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
@@ -28,8 +26,9 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save yourself, save others."
-        android:fontFamily="monospace"
+        android:text="Save yourself\nsave others."
+        android:lineSpacingExtra="4dp"
+        android:paddingVertical="5dp"
         android:textSize="18dp"
         android:textColor="@color/cardview_light_background"/>
 

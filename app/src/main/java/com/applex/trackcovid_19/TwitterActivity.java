@@ -52,6 +52,7 @@ public class TwitterActivity extends AppCompatActivity {
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setElevation(0);
 
         progressBar = findViewById(R.id.progressbar);
         who = findViewById(R.id.whobtn);
