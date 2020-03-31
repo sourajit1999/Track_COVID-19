@@ -296,10 +296,6 @@ public class InputDetails extends AppCompatActivity {
             public void onClick(View v) {
                 sel_ID = 4;
                 customize();
-                travel.setVisibility(View.GONE);
-                flight.setVisibility(View.GONE);
-                train.setVisibility(View.GONE);
-                gathering.setVisibility(View.VISIBLE);
                 mydialogue.dismiss();
             }
         });
@@ -312,7 +308,7 @@ public class InputDetails extends AppCompatActivity {
             urlLink = Keys.Sheet1_Script_id;
             id = Keys.Sheet1_Sheet_id;
 
-            travel.setVisibility(View.GONE);
+            travel.setVisibility(View.VISIBLE);
             flight.setVisibility(View.VISIBLE);
             train.setVisibility(View.GONE);
             gathering.setVisibility(View.GONE);
