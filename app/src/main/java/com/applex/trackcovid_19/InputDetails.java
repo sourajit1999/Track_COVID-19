@@ -122,6 +122,16 @@ public class InputDetails extends AppCompatActivity {
                         arrival_date.requestFocus();
                         return;
                     }
+                    if(depart_time.getText().toString().isEmpty()){
+                        depart_time.setError("Time missing");
+                        depart_time.requestFocus();
+                        return;
+                    }
+                    if(arrival_time.getText().toString().isEmpty()){
+                        arrival_time.setError("Time missing");
+                        arrival_time.requestFocus();
+                        return;
+                    }
 
                     if(flight_no.getText().toString().isEmpty()){
                         flight_no.setError("Flight number missing");
@@ -164,6 +174,16 @@ public class InputDetails extends AppCompatActivity {
                     if(arrival_date.getText().toString().isEmpty()){
                         arrival_date.setError("Date missing");
                         arrival_date.requestFocus();
+                        return;
+                    }
+                    if(depart_time.getText().toString().isEmpty()){
+                        depart_time.setError("Time missing");
+                        depart_time.requestFocus();
+                        return;
+                    }
+                    if(arrival_time.getText().toString().isEmpty()){
+                        arrival_time.setError("Time missing");
+                        arrival_time.requestFocus();
                         return;
                     }
 
@@ -215,6 +235,16 @@ public class InputDetails extends AppCompatActivity {
                     if(arrival_date.getText().toString().isEmpty()){
                         arrival_date.setError("Date missing");
                         to.requestFocus();
+                        return;
+                    }
+                    if(depart_time.getText().toString().isEmpty()){
+                        depart_time.setError("Time missing");
+                        depart_time.requestFocus();
+                        return;
+                    }
+                    if(arrival_time.getText().toString().isEmpty()){
+                        arrival_time.setError("Time missing");
+                        arrival_time.requestFocus();
                         return;
                     }
 
