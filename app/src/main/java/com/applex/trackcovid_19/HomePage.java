@@ -69,7 +69,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         myDialogue.findViewById(R.id.verify).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText et = myDialogue.findViewById(R.id.otp);
+                EditText et = myDialogue.findViewById(R.id.otp_dialog);
                 if(et.getText().toString().length()==6){
                     verifyCode(et.getText().toString());
                 }
@@ -96,16 +96,24 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
                     mPinCode.requestFocus();
                     return;
                 }
-                if(number.matches(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber())){
-                    Intent intent = new Intent(getApplicationContext(), InputDetails.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    intent.putExtra("bloodgroup",mSpinnerBlood.getSelectedItem().toString());
-                    intent.putExtra("pincode",mPinCode.getText().toString().trim());
-                    intent.putExtra("phone",mPhoneNo.getText().toString().trim());
-                    startActivity(intent);
+                if(FirebaseAuth.getInstance() != null){
+                    if(number.matches(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber().replace("+91",""))){
+                        Intent intent = new Intent(getApplicationContext(), InputDetails.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        intent.putExtra("bloodgroup",mSpinnerBlood.getSelectedItem().toString());
+                        intent.putExtra("pincode",mPinCode.getText().toString().trim());
+                        intent.putExtra("phone",mPhoneNo.getText().toString().trim());
+                        startActivity(intent);
+                    }
+                    else {
+                        String phoneNumber = code + number;
+                        myDialogue.show();
+                        sendVerificationCode(phoneNumber);
+                    }
                 }
                 else {
-                    FirebaseAuth.getInstance().signOut();
+                    if(FirebaseAuth.getInstance()!= null)
+                        FirebaseAuth.getInstance().signOut();
                     String phoneNumber = code + number;
                     myDialogue.show();
                     sendVerificationCode(phoneNumber);

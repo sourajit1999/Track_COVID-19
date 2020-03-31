@@ -61,7 +61,7 @@
             android:textColor="#212121"
             android:textSize="20dp"/>
         <EditText
-            android:id="@+id/otp"
+            android:id="@+id/otp_dialog"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center_horizontal"
