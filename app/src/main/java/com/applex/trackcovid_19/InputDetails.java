@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.applex.trackcovid_19.util.Keys;
@@ -50,6 +51,7 @@ public class InputDetails extends AppCompatActivity {
     LinearLayout train;
     LinearLayout travel;
     Button submit;
+    TextView addtraveldetails;
 
     EditText from,to,depart_date,depart_time,arrival_date,arrival_time;
 
@@ -76,6 +78,7 @@ public class InputDetails extends AppCompatActivity {
         train = findViewById(R.id.traindetails);
         flight = findViewById(R.id.flightdetails);
         gathering = findViewById(R.id.gatheringdetails);
+        addtraveldetails=findViewById(R.id.addtravel);
 
         from = findViewById(R.id.from_travel);
         to = findViewById(R.id.to_travel);
@@ -356,6 +359,7 @@ public class InputDetails extends AppCompatActivity {
             id = Keys.Sheet3_Sheet_id;
 
             travel.setVisibility(View.VISIBLE);
+            addtraveldetails.setText("Bus Details");
             flight.setVisibility(View.GONE);
             train.setVisibility(View.GONE);
             gathering.setVisibility(View.GONE);
