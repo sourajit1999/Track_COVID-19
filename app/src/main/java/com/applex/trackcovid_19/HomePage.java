@@ -39,9 +39,10 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
 //    private Spinner mSpinner;
     private EditText mPhoneNo,mCode;
-    private EditText mPinCode;
+    private EditText mPinCode,mOtp;
     private Spinner mSpinnerBlood;
     Button twitter;
+
 
     Dialog myDialogue;
     String verificationId;
@@ -58,6 +59,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 //        mSpinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, CountryData.countryNames));
 
         mCode = findViewById(R.id.code);
+        mOtp = findViewById(R.id.otp);
         mPhoneNo = findViewById(R.id.phone);
         mPinCode = findViewById(R.id.pin_code);
         mSpinnerBlood = findViewById(R.id.spinnerBlood);
@@ -65,7 +67,18 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
         myDialogue.setContentView(R.layout.jumping_panda_progress);
         myDialogue.setCanceledOnTouchOutside(FALSE);
-        myDialogue.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        myDialogue.findViewById(R.id.verify).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText et = findViewById(R.id.otp);
+                if(et.getText().toString().length()==6){
+                    verifyCode(et.getText().toString());
+                }
+                else
+                    Toast.makeText(getApplicationContext(),"Invalid OTP",Toast.LENGTH_SHORT).show();
+            }
+        });
+        Objects.requireNonNull(myDialogue.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         findViewById(R.id.otp).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,17 +97,21 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
                     mPinCode.requestFocus();
                     return;
                 }
+                if(number.matches(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber())){
+                    Intent intent = new Intent(getApplicationContext(), InputDetails.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    intent.putExtra("bloodgroup",mSpinnerBlood.getSelectedItem().toString());
+                    intent.putExtra("pincode",mPinCode.getText().toString().trim());
+                    intent.putExtra("phone",mPhoneNo.getText().toString().trim());
+                    startActivity(intent);
+                }
+                else {
+                    FirebaseAuth.getInstance().signOut();
+                    String phoneNumber = code + number;
+                    myDialogue.show();
+                    sendVerificationCode(phoneNumber);
+                }
 
-                String phoneNumber = code + number;
-                myDialogue.show();
-                sendVerificationCode(phoneNumber);
-
-//                Intent intent = new Intent(getApplicationContext(), InputDetails.class);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                intent.putExtra("bloodgroup",mSpinnerBlood.getSelectedItem().toString());
-//                intent.putExtra("pincode",mPinCode.getText().toString().trim());
-//                intent.putExtra("phone",mPhoneNo.getText().toString().trim());
-//                startActivity(intent);
             }
         });
 
@@ -114,14 +131,6 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
 
         //////////DRAWER////////////////////
 
-//        FloatingActionButton fab = findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
@@ -164,7 +173,6 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
             String code = phoneAuthCredential.getSmsCode();
             if (code != null){
-                myDialogue.dismiss();
 //                progressBar.setVisibility(View.VISIBLE);
                 verifyCode(code);
             }
@@ -195,9 +203,11 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
                             intent.putExtra("pincode",mPinCode.getText().toString().trim());
                             intent.putExtra("phone",mPhoneNo.getText().toString().trim());
                             startActivity(intent);
+                            myDialogue.dismiss();
 
                         } else {
                             Toast.makeText(getApplicationContext(), Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_LONG).show();
+                            myDialogue.dismiss();
                         }
                     }
 

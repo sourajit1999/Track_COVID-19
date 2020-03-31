@@ -46,6 +46,42 @@
         android:layout_height="wrap_content"
         android:text="Stay at home, Be a Hero"
         android:gravity="center"
-        android:textSize="20dp"/>
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="15dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="15sp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter OTP : "
+            android:padding="5sp"
+            android:textColor="#212121"
+            android:textSize="20dp"/>
+        <EditText
+            android:id="@+id/otp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:inputType="number"
+            android:maxLength="6"
+            android:fontFamily="monospace"
+            android:text="abc"
+            android:digits="0123456789"
+            android:textSize="20dp"
+            android:padding="5dp"/>
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/verify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Verify"
+        android:gravity="end"
+        android:padding="5dp"
+        android:layout_marginHorizontal="10dp"
+        android:textColor="@color/colorPrimaryDark"/>
 
 </LinearLayout>

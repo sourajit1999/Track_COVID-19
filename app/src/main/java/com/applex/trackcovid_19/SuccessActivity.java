@@ -34,7 +34,6 @@ public class SuccessActivity extends AppCompatActivity {
          back_home.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 FirebaseAuth.getInstance().signOut();
                  startActivity(new Intent(getApplicationContext(), HomePage.class));
                  finish();
              }
