@@ -334,7 +334,6 @@ public class InputDetails extends AppCompatActivity {
 
     private void customize(){
         if(sel_ID==1){
-            Toast.makeText(getApplicationContext(),"flight",Toast.LENGTH_SHORT).show();
             urlLink = Keys.Sheet1_Script_id;
             id = Keys.Sheet1_Sheet_id;
 
