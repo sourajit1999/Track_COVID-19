@@ -39,7 +39,7 @@ import static java.lang.Boolean.logicalAnd;
 public class InputDetails extends AppCompatActivity {
 
     Dialog mydialogue;
-    int sel_ID = 0;
+    public int sel_ID = 0;
     String id;
     String urlLink= null;
 
@@ -73,9 +73,9 @@ public class InputDetails extends AppCompatActivity {
         setContentView(R.layout.element_recyclerview);
 
         travel = findViewById(R.id.traveldetails);
-        train = findViewById(R.id.traveldetails);
-        flight = findViewById(R.id.traveldetails);
-        gathering = findViewById(R.id.traveldetails);
+        train = findViewById(R.id.traindetails);
+        flight = findViewById(R.id.flightdetails);
+        gathering = findViewById(R.id.gatheringdetails);
 
         from = findViewById(R.id.from_travel);
         to = findViewById(R.id.to_travel);
@@ -144,6 +144,7 @@ public class InputDetails extends AppCompatActivity {
                     board_class = to.getText().toString().trim();
 
                 }
+                //train
                 else if(sel_ID == 2) {
                     if(to.getText().toString().isEmpty()){
                         to.setError("Source missing");
@@ -194,7 +195,8 @@ public class InputDetails extends AppCompatActivity {
                     coach_num = coach_no.getText().toString();
 
                 }
-                else if(sel_ID ==3) {
+                //BUS
+                else if(sel_ID == 3) {
                     if(to.getText().toString().isEmpty()){
                         to.setError("Source missing");
                         to.requestFocus();
@@ -222,9 +224,9 @@ public class InputDetails extends AppCompatActivity {
                     travel_d_time = depart_time.getText().toString().trim();
                     travel_a_date = arrival_date.getText().toString().trim();
                     travel_a_time = arrival_time.getText().toString().trim();
-                }//BUS
-
-                else if(sel_ID ==4) {
+                }
+                //Gathering
+                else if(sel_ID == 4) {
                     if(address.getText().toString().isEmpty()){
                         address.setError("Address details missing");
                         address.requestFocus();
@@ -305,8 +307,6 @@ public class InputDetails extends AppCompatActivity {
     }
 
     private void customize(){
-
-
         if(sel_ID==1){
             Toast.makeText(getApplicationContext(),"flight",Toast.LENGTH_SHORT).show();
             urlLink = Keys.Sheet1_Script_id;

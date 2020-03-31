@@ -226,7 +226,7 @@
                 android:padding="10dp" />
         </LinearLayout>
         <LinearLayout
-            android:id="@+id/Gatheringdetails"
+            android:id="@+id/gatheringdetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
