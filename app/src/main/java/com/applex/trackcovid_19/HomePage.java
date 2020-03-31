@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -38,14 +37,14 @@ import static java.lang.Boolean.FALSE;
 
 public class HomePage extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    private Spinner mSpinner;
-    private EditText mPhoneNo;
+//    private Spinner mSpinner;
+    private EditText mPhoneNo,mCode;
     private EditText mPinCode;
     private Spinner mSpinnerBlood;
     Button twitter;
 
-    Dialog mydialogue;
-    String verificationid;
+    Dialog myDialogue;
+    String verificationId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,22 +54,23 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         setSupportActionBar(toolbar);
         twitter = findViewById(R.id.twitterbtn);
 
-        mSpinner = findViewById(R.id.spinnerCountries);
-        mSpinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, CountryData.countryNames));
+//        mSpinner = findViewById(R.id.spinnerCountries);
+//        mSpinner.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, CountryData.countryNames));
 
+        mCode = findViewById(R.id.code);
         mPhoneNo = findViewById(R.id.phone);
         mPinCode = findViewById(R.id.pin_code);
         mSpinnerBlood = findViewById(R.id.spinnerBlood);
-        mydialogue = new Dialog(HomePage.this);
+        myDialogue = new Dialog(HomePage.this);
 
-        mydialogue.setContentView(R.layout.jumping_panda_progress);
-        mydialogue.setCanceledOnTouchOutside(FALSE);
-        mydialogue.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        myDialogue.setContentView(R.layout.jumping_panda_progress);
+        myDialogue.setCanceledOnTouchOutside(FALSE);
+        myDialogue.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         findViewById(R.id.otp).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String code = CountryData.countryAreaCodes[mSpinner.getSelectedItemPosition()];
+                String code = mCode.getText().toString();
 
                 String number = mPhoneNo.getText().toString().trim();
 
@@ -85,16 +85,16 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
                     return;
                 }
 
-                String phonenumber = "+" + code + number;
-                mydialogue.show();
-//                sendVerificationCode(phonenumber);
+                String phoneNumber = code + number;
+                myDialogue.show();
+                sendVerificationCode(phoneNumber);
 
-                Intent intent = new Intent(getApplicationContext(), InputDetails.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                intent.putExtra("bloodgroup",mSpinnerBlood.getSelectedItem().toString());
-                intent.putExtra("pincode",mPinCode.getText().toString().trim());
-                intent.putExtra("phone",mPhoneNo.getText().toString().trim());
-                startActivity(intent);
+//                Intent intent = new Intent(getApplicationContext(), InputDetails.class);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                intent.putExtra("bloodgroup",mSpinnerBlood.getSelectedItem().toString());
+//                intent.putExtra("pincode",mPinCode.getText().toString().trim());
+//                intent.putExtra("phone",mPhoneNo.getText().toString().trim());
+//                startActivity(intent);
             }
         });
 
@@ -157,14 +157,14 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         @Override
         public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
             super.onCodeSent(s, forceResendingToken);
-            verificationid = s;
+            verificationId = s;
         }
 
         @Override
         public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
             String code = phoneAuthCredential.getSmsCode();
             if (code != null){
-                mydialogue.dismiss();
+                myDialogue.dismiss();
 //                progressBar.setVisibility(View.VISIBLE);
                 verifyCode(code);
             }
@@ -173,13 +173,13 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         @Override
         public void onVerificationFailed(FirebaseException e) {
             Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
-            mydialogue.dismiss();
+            myDialogue.dismiss();
         }
     };
     /////////////////SEND NO FOR VERIFICATION/////////////
 
     private void verifyCode(String code){
-        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationid, code);
+        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, code);
         signInWithCredential(credential);
     }
 

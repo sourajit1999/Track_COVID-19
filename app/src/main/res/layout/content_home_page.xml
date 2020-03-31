@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/app_bar_home_page">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,7 +21,7 @@
         android:padding="10dp"
         android:textSize="18sp"
         android:layout_marginTop="15dp"
-        android:fontFamily="sans-serif-medium"
+        android:fontFamily="sans-serif-light"
         android:text="Did you travel anywhere during the past one month?\nOr, did you attend any large gathering?"
         />
         <TextView
@@ -28,10 +30,10 @@
             android:layout_height="wrap_content"
             android:textColor="#C51162"
             android:lineSpacingExtra="5dp"
-            android:padding="10dp"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:fontFamily="monospace"
+            android:padding="12dp"
+            android:layout_marginTop="12dp"
+            android:textSize="25sp"
+
             android:text="SUBMIT A REPORT:"
             />
         <LinearLayout
@@ -39,53 +41,47 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-
+            android:layout_margin="10dp"
+            android:background="@drawable/field_layout"
             android:gravity="center_vertical">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Select Country"
-                    android:gravity="center"
-                    android:padding="10dp"/>
-            <Spinner
-                android:id="@+id/spinnerCountries"
-                android:layout_width="150dp"
-                android:layout_margin="10dp"
-                android:gravity="center"
-                android:layout_height="wrap_content" />
-            </LinearLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:animateLayoutChanges="true"
-                android:background="@drawable/field_layout"
-                android:layout_margin="10dp">
 
                 <EditText
+                    android:id="@+id/code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="+91"
+                    android:background="@android:color/transparent"
+                    android:textSize="18sp"
+                    android:padding="20dp" />
+<!--            <Spinner-->
+<!--                android:id="@+id/spinnerCountries"-->
+<!--                android:layout_width="150dp"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:gravity="center"-->
+<!--                android:layout_height="wrap_content" />-->
+
+
+
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:maxLength="10"
+                    android:background="@android:color/transparent"
+                    android:hint="Mobile No."
                     android:digits="0123456789"
-                    android:background="@android:color/white"
-                    android:hint="Phone No."
                     android:padding="12dp"
                     android:textSize="18sp" />
 
-            </com.google.android.material.textfield.TextInputLayout>
 
 
         </LinearLayout>
 
 
 
-        <com.google.android.material.textfield.TextInputLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:animateLayoutChanges="true"
@@ -93,7 +89,7 @@
             app:shapeAppearanceOverlay="@drawable/field_layout"
             android:layout_margin="10dp">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/pin_code"
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
@@ -107,7 +103,7 @@
                 android:padding="12dp"
                 android:textSize="18sp" />
 
-        </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -139,10 +135,8 @@
             android:id="@+id/otp"
             android:layout_width="183dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
             android:layout_margin="20dp"
-            android:background="@color/blue"
+            android:background="@drawable/background_tab"
             android:text="Send OTP"
             android:textAllCaps="false"
             android:textColor="@android:color/background_light"
@@ -155,17 +149,15 @@
             android:layout_height="1dp"
             android:layout_marginTop="15dp"
             android:layout_marginHorizontal="20dp"
-            android:background="@color/blue"/>
+            android:background="#212121"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="#C51162"
             android:lineSpacingExtra="5dp"
-            android:padding="10dp"
+            android:padding="12dp"
             android:layout_marginTop="15dp"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:fontFamily="monospace"
+            android:textSize="25sp"
             android:text="STAY AWARE"
             />
         <TextView
@@ -175,7 +167,7 @@
             android:lineSpacingExtra="5dp"
             android:padding="10dp"
             android:textSize="18sp"
-            android:fontFamily="sans-serif-medium"
+            android:fontFamily="sans-serif-light"
             android:text="Avoid fake news.\nFollow Twitter handles of W.H.O, Govt. Of India and Ministry Of Health. "
             />
 
@@ -183,10 +175,8 @@
             android:id="@+id/twitterbtn"
             android:layout_width="183dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
             android:layout_margin="20dp"
-            android:background="@color/blue"
+            android:background="@drawable/background_tab"
             android:text="VISIT"
             android:textAllCaps="false"
             android:textColor="@android:color/background_light"

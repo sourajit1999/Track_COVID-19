@@ -10,6 +10,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -80,10 +81,11 @@ public class TwitterActivity extends AppCompatActivity {
         who.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                webView.clearHistory();
+                webView.clearCache(true);
                 webView.loadUrl("https://twitter.com/who?lang=en");
                 progressBar.setVisibility(View.VISIBLE);
                 webView.setVisibility(View.INVISIBLE);
-                webView.clearHistory();
 
                 who.setBackgroundColor(getResources().getColor(R.color.blue));
                 who.setTextColor(getResources().getColor(R.color.white));
@@ -99,10 +101,11 @@ public class TwitterActivity extends AppCompatActivity {
         moh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                webView.clearHistory();
+                webView.clearCache(true);
                 webView.loadUrl("https://twitter.com/mohfw_india?lang=en");
                 progressBar.setVisibility(View.VISIBLE);
                 webView.setVisibility(View.INVISIBLE);
-                webView.clearHistory();
 
                 moh.setBackgroundColor(getResources().getColor(R.color.blue));
                 moh.setTextColor(getResources().getColor(R.color.white));
@@ -117,10 +120,11 @@ public class TwitterActivity extends AppCompatActivity {
         goi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                webView.clearHistory();
+                webView.clearCache(true);
                 webView.loadUrl("https://twitter.com/mygovindia");
                 progressBar.setVisibility(View.VISIBLE);
                 webView.setVisibility(View.INVISIBLE);
-                webView.clearHistory();
 
                 goi.setBackgroundColor(getResources().getColor(R.color.blue));
                 goi.setTextColor(getResources().getColor(R.color.white));
@@ -138,12 +142,14 @@ public class TwitterActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(webView.canGoBack()){
-            webView.goBack();
-        }
-        else {
-            super.onBackPressed();
-        }
+//        if(webView.canGoBack()){
+//            webView.goBack();
+//        }
+//        else {
+//            super.onBackPressed();
+//        }
+        super.onBackPressed();
+
     }
     @Override
     protected void onStart() {
@@ -155,6 +161,17 @@ public class TwitterActivity extends AppCompatActivity {
 //
 //            startActivity(intent);
 //        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                super.onBackPressed();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+
     }
 
 
