@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "976173622697",
+    "firebase_url": "https://track-covid-19-13e82.firebaseio.com",
+    "project_id": "track-covid-19-13e82",
+    "storage_bucket": "track-covid-19-13e82.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976173622697:android:e6655d6e7148c240b450b8",
+        "android_client_info": {
+          "package_name": "com.applex.trackcovid_19"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "976173622697-jij0qsj9mr5v55h45fji5gla6cv47714.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.applex.trackcovid_19",
+            "certificate_hash": "72b3f14d71ab9e9d4c8971b52da124c2109e3581"
+          }
+        },
+        {
+          "client_id": "976173622697-td5fgfo38vg44kbk176c3737dln87nnm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.applex.trackcovid_19",
+            "certificate_hash": "ede02b6c80b10c78af6c332fe4bf2ad8c5e4c288"
+          }
+        },
+        {
+          "client_id": "976173622697-dii43al638k6lmku937kfa0erhuaf11h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClSEJjJQsF04cI5neGXywFgFSrmpFYJpU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "976173622697-dii43al638k6lmku937kfa0erhuaf11h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

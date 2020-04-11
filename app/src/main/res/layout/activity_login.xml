@@ -172,6 +172,18 @@
     </LinearLayout>
 
     </ScrollView>
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/progressAnim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="100dp"
+        app:lottie_fileName="13532-loading-animation.json"
+        app:lottie_loop="true"
+        android:background="#55212121"
+        app:lottie_autoPlay="true"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        />
 
 
 </RelativeLayout>
