@@ -11,7 +11,15 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.applex.trackcovid_19.adapters.BusAdapter;
+import com.applex.trackcovid_19.adapters.FlightAdapter;
+import com.applex.trackcovid_19.adapters.GatheringAdapter;
+import com.applex.trackcovid_19.adapters.TrainAdapter;
+import com.applex.trackcovid_19.models.BusModel;
+import com.applex.trackcovid_19.models.FlightModel;
+import com.applex.trackcovid_19.models.GatheringModel;
 import com.applex.trackcovid_19.models.PatientModel;
+import com.applex.trackcovid_19.models.TrainModel;
 import com.applex.trackcovid_19.util.JSONParser;
 import com.applex.trackcovid_19.util.Keys;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,7 +41,11 @@ public class DiaplayGatheringList extends AppCompatActivity {
     int sel_ID = 0;
 
     RecyclerView recyclerView;
-    ArrayList<PatientModel> patientModels;
+
+    ArrayList<FlightModel> flightModels = new ArrayList<>();
+    ArrayList<TrainModel> trainModels = new ArrayList<>();
+    ArrayList<BusModel> busModels = new ArrayList<>();
+    ArrayList<GatheringModel> gatheringModels = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +54,27 @@ public class DiaplayGatheringList extends AppCompatActivity {
 
         myDialogue = new Dialog(getApplicationContext());
         recyclerView = findViewById(R.id.covid_list) ;
-        patientModels = new ArrayList<>();
 
         if(getIntent().getStringExtra("Selection")!=null)
             sel_ID = Integer.parseInt(getIntent().getStringExtra("Selection"));
+
+        if(sel_ID == 2){
+            Objects.requireNonNull(getSupportActionBar()).setTitle("Flight");
+            id = Keys.Sheet1_Sheet_id;
+        }
+        if(sel_ID == 2){
+            getSupportActionBar().setTitle("Flight");
+            id = Keys.Sheet2_Sheet_id;
+        }
+        if(sel_ID == 2){
+            getSupportActionBar().setTitle("Flight");
+            id = Keys.Sheet3_Sheet_id;
+        }
+        if(sel_ID == 2){
+            getSupportActionBar().setTitle("Flight");
+            id = Keys.Sheet4_Sheet_id;
+        }
+
         new GetDataTask().execute();
 
     }
@@ -55,28 +84,25 @@ public class DiaplayGatheringList extends AppCompatActivity {
         int jIndex=0;
         int len;
 
-        String modelTeamName;
-        String modelTeamID;
+        BusModel busModel = null;
+        TrainModel trainModel = null;
+        FlightModel flightModel = null;
+        GatheringModel gatheringModel = null;
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
 
-            myDialogue.setContentView(R.layout.dialog_otp_progress);
+            myDialogue.setContentView(R.layout.dialog_general_progress);
             myDialogue.setCanceledOnTouchOutside(FALSE);
             Objects.requireNonNull(myDialogue.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             myDialogue.show();
-
 
         }
 
         @Nullable
         @Override
         protected Void doInBackground(Void... params) {
-
-            /**
-             * Getting JSON Object from Web Using okHttp
-             */
 
             JSONParser jp = new JSONParser(id);
             JSONObject jsonObject = jp.getDataFromWeb();
@@ -104,62 +130,49 @@ public class DiaplayGatheringList extends AppCompatActivity {
                         if(lenArray > 0) {
                             for(; jIndex < len; jIndex++) {
 
-                                /**
-                                 * Creating Every time New Object
-                                 * and
-                                 * Adding into List
-                                 */
-//                                UserDataModel model = new UserDataModel();
-
-                                /**
-                                 * Getting Inner Object from contacts array...
-                                 * and
-                                 * From that We will get Name of that Contact
-                                 *
-                                 */
                                 JSONObject innerObject = array.getJSONObject(jIndex);
 
-                                else if(sel_ID ==2){
-                                    String modelemail = innerObject.getString(Keys.eventEmail);
+                                String contact = innerObject.getString(Keys.contact);
+                                String blood_group = innerObject.getString(Keys.bloodgroup);
+                                String pincode = innerObject.getString(Keys.pincode);
+
+                                if(sel_ID!= 5){
+                                    String depart_date = innerObject.getString(Keys.departuredate);
+                                    String depart_from = innerObject.getString(Keys.from);
+                                    String arrival_date = innerObject.getString(Keys.arrivaldate);
+                                    String arrival_to = innerObject.getString(Keys.to);
+                                    if(sel_ID ==2){
+                                        String flight_no = innerObject.getString(Keys.flightNo);
+                                        flightModel = new FlightModel(contact, blood_group, pincode,depart_date,depart_from,arrival_date,arrival_to,flight_no);
+                                        flightModels.add(flightModel);
+                                    }
+                                    else if(sel_ID == 3){
+                                        String train_no = innerObject.getString(Keys.trainNo);
+                                        String train_name = innerObject.getString(Keys.trainName);
+                                        String coach_no = innerObject.getString(Keys.coachNo);
+                                        trainModel = new TrainModel(contact, blood_group, pincode,depart_date,depart_from,arrival_date,arrival_to,train_no,train_name,coach_no);
+                                        trainModels.add(trainModel);
+
+                                    }
+                                    else{
+                                        busModel = new BusModel(contact, blood_group, pincode,depart_date,depart_from,arrival_date,arrival_to);
+                                        busModels.add(busModel);
+                                    }
 
                                 }
-                                else if(sel_ID == 3){
-                                    String modelemail = innerObject.getString(Keys.eventEmail);
 
-                                }
-                                else if(sel_ID == 4){
-                                    String modelemail = innerObject.getString(Keys.eventEmail);
-
-                                }
                                 else if(sel_ID == 5){
-                                    String modelemail = innerObject.getString(Keys.eventEmail);
+                                    String date = innerObject.getString(Keys.date);
+                                    String time = innerObject.getString(Keys.time);
+                                    String place = innerObject.getString(Keys.place);
+                                    String size = innerObject.getString(Keys.approxGathering);
+                                    gatheringModel = new GatheringModel(contact, blood_group, pincode,date,time,place,size);
+                                    gatheringModels.add(gatheringModel);
 
                                 }
-                                String modelemail = innerObject.getString(Keys.eventEmail);
 
-                                if(modelemail.matches(FirebaseAuth.getInstance().getCurrentUser().getEmail())){
-                                    modelTeamID = innerObject.getString(Keys.teamId);
-                                    modelTeamName = innerObject.getString(Keys.eventTeamName);
-                                    break;
-                                }
-
-
-                                /**
-                                 * Getting Object from Object "phone"
-                                 */
-                                //JSONObject phoneObject = innerObject.getJSONObject(Keys.KEY_PHONE);
-                                //String phone = phoneObject.getString(Keys.KEY_MOBILE);
-
-//                                model.setName(modelname);
-//                                model.setEmail(modelemail);
-//                                model.setParticipantID(modelparticipantID);
-//                                model.setContactNo(modelcontactNo);
-
-                                /**
-                                 * Adding name and phone concatenation in List...
-                                 */
-//                                list.add(model);
                             }
+
                         }
                     }
                 } else {
@@ -178,6 +191,22 @@ public class DiaplayGatheringList extends AppCompatActivity {
              * Checking if List size if more than zero then
              * Update ListView
              */
+            if(sel_ID ==2){
+                FlightAdapter flightAdapter= new FlightAdapter(flightModels,getApplicationContext());
+                recyclerView.setAdapter(flightAdapter);
+            }
+            else if(sel_ID == 3){
+                TrainAdapter trainAdapter= new TrainAdapter(trainModels,getApplicationContext());
+                recyclerView.setAdapter(trainAdapter);
+            }
+            else if(sel_ID == 4){
+                BusAdapter busAdapter= new BusAdapter(busModels,getApplicationContext());
+                recyclerView.setAdapter(busAdapter);
+            }
+            else if(sel_ID == 5){
+                GatheringAdapter gatheringAdapter= new GatheringAdapter(gatheringModels,getApplicationContext());
+                recyclerView.setAdapter(gatheringAdapter);
+            }
 
             myDialogue.dismiss();
 

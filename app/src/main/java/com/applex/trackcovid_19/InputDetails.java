@@ -386,7 +386,7 @@ public class InputDetails extends AppCompatActivity {
             ////////////SELECT SHEET////////////
             progressDialogue = new Dialog(getApplicationContext());
 
-            progressDialogue.setContentView(R.layout.dialog_otp_progress);
+            progressDialogue.setContentView(R.layout.dialog_general_progress);
             progressDialogue.setCanceledOnTouchOutside(FALSE);
             Objects.requireNonNull(progressDialogue.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             progressDialogue.show();

@@ -36,6 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="56, Female"
+                android:paddingVertical="2dp"
                 android:textSize="18dp"
                 android:textColor="#212121"
                 android:paddingHorizontal="8dp"/>
@@ -52,14 +53,14 @@
                 android:layout_height="wrap_content">
                 <TextView
                     android:id="@+id/patient_date"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="8dp"
                     android:layout_weight="1"
                     android:text="31/3/2019"/>
                 <TextView
                     android:id="@+id/patient_status"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingHorizontal="8dp"
                     android:layout_weight="1"
@@ -70,6 +71,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Notes"
+                android:textSize="17dp"
+                android:paddingVertical="2dp"
                 android:textColor="#212121"
                 android:paddingHorizontal="8dp" />
             <TextView
@@ -77,6 +80,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Travelled from Italy"
+                android:textColor="@color/colorPrimaryDark"
                 android:textStyle="italic"
                 android:paddingHorizontal="8dp" />
 

@@ -38,7 +38,7 @@ public class ChooseListActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 sel_ID = 2;
-                Intent intent = new Intent(getApplicationContext(), DiaplayPatientList.class);
+                Intent intent = new Intent(getApplicationContext(), DiaplayGatheringList.class);
                 intent.putExtra("Selection", Integer.toString(sel_ID));
                 startActivity(intent);
             }
@@ -47,7 +47,7 @@ public class ChooseListActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 sel_ID = 3;
-                Intent intent = new Intent(getApplicationContext(), DiaplayPatientList.class);
+                Intent intent = new Intent(getApplicationContext(), DiaplayGatheringList.class);
                 intent.putExtra("Selection", Integer.toString(sel_ID));
                 startActivity(intent);
             }
@@ -56,7 +56,7 @@ public class ChooseListActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 sel_ID = 4;
-                Intent intent = new Intent(getApplicationContext(), DiaplayPatientList.class);
+                Intent intent = new Intent(getApplicationContext(), DiaplayGatheringList.class);
                 intent.putExtra("Selection", Integer.toString(sel_ID));
                 startActivity(intent);
             }
@@ -65,7 +65,7 @@ public class ChooseListActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 sel_ID = 5;
-                Intent intent = new Intent(getApplicationContext(), DiaplayPatientList.class);
+                Intent intent = new Intent(getApplicationContext(), DiaplayGatheringList.class);
                 intent.putExtra("Selection", Integer.toString(sel_ID));
                 startActivity(intent);
             }

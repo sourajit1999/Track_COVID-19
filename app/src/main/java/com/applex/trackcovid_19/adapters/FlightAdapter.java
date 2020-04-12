@@ -1,5 +1,6 @@
 package com.applex.trackcovid_19.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,18 +12,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.applex.trackcovid_19.R;
-import com.applex.trackcovid_19.models.GatheringModel;
-import com.applex.trackcovid_19.models.PatientModel;
+import com.applex.trackcovid_19.models.BusModel;
+import com.applex.trackcovid_19.models.FlightModel;
 
 import java.util.ArrayList;
 
-public class GatheringAdapter extends RecyclerView.Adapter<GatheringAdapter.ProgrammingViewHolder> {
+public class FlightAdapter extends RecyclerView.Adapter<FlightAdapter.ProgrammingViewHolder> {
 
-    private ArrayList<GatheringModel> mList;
+    private ArrayList<FlightModel> mList;
     private Context context;
 
 
-    public GatheringAdapter(ArrayList<GatheringModel> list, Context context) {
+    public FlightAdapter(ArrayList<FlightModel> list, Context context) {
         this.mList = list;
         this.context = context;
     }
@@ -32,13 +33,14 @@ public class GatheringAdapter extends RecyclerView.Adapter<GatheringAdapter.Prog
     @Override
     public ProgrammingViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.item_gathering_list,viewGroup,false);
+                .inflate(R.layout.item_flight_list,viewGroup,false);
         return new ProgrammingViewHolder(v);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull final ProgrammingViewHolder programmingViewHolder, int i) {
-        final GatheringModel currentItem = mList.get(i);
+        final FlightModel currentItem = mList.get(i);
 
         programmingViewHolder.details.setVisibility(View.GONE);
         programmingViewHolder.set_visibility.setOnClickListener(new View.OnClickListener() {
@@ -54,14 +56,15 @@ public class GatheringAdapter extends RecyclerView.Adapter<GatheringAdapter.Prog
                 }
             }
         });
-        programmingViewHolder.contact.setText(currentItem.getContact());
-        programmingViewHolder.blood_group.setText(currentItem.getBlood_group());
-        programmingViewHolder.pincode.setText(currentItem.getPincode());
-        programmingViewHolder.date.setText(currentItem.getDate());
-        programmingViewHolder.time.setText(currentItem.getTime());
-        programmingViewHolder.place.setText(currentItem.getPlace());
-        programmingViewHolder.size.setText(currentItem.getSize());
 
+        programmingViewHolder.contact.setText(currentItem.getContact());
+        programmingViewHolder.blood_group.setText("Blood Group: "+currentItem.getBlood_group());
+        programmingViewHolder.pincode.setText("Pincode: " + currentItem.getPincode());
+        programmingViewHolder.depart_date.setText(currentItem.getDepart_date());
+        programmingViewHolder.depart_from.setText(currentItem.getDepart_from());
+        programmingViewHolder.arrival_date.setText(currentItem.getArrival_date());
+        programmingViewHolder.arrival_to.setText(currentItem.getArrival_to());
+        programmingViewHolder.flight_no.setText("Flight No. " + currentItem.getFlight_no());
 
     }
 
@@ -77,25 +80,29 @@ public class GatheringAdapter extends RecyclerView.Adapter<GatheringAdapter.Prog
         TextView contact;
         TextView blood_group;
         TextView pincode;
-        TextView date;
-        TextView time;
-        TextView place;
-        TextView size;
+        TextView depart_date;
+        TextView depart_from;
+        TextView arrival_date;
+        TextView arrival_to;
+        TextView flight_no;
+
         TextView set_visibility;
         LinearLayout details;
+
 
         private ProgrammingViewHolder(@NonNull View itemView) {
             super(itemView);
             contact = itemView.findViewById(R.id.contact);
             blood_group = itemView.findViewById(R.id.blood_group);
             pincode = itemView.findViewById(R.id.pincode);
-            date = itemView.findViewById(R.id.date);
-            time = itemView.findViewById(R.id.time);
-            place = itemView.findViewById(R.id.place);
-            size = itemView.findViewById(R.id.size);
+            depart_date = itemView.findViewById(R.id.depart_date);
+            depart_from = itemView.findViewById(R.id.depart_from);
+            arrival_date = itemView.findViewById(R.id.arrival_date);
+            arrival_to = itemView.findViewById(R.id.arrival_to);
+            flight_no = itemView.findViewById(R.id.flight_no);
+
             set_visibility = itemView.findViewById(R.id.set_visibility);
             details = itemView.findViewById(R.id.details);
-
         }
     }
 

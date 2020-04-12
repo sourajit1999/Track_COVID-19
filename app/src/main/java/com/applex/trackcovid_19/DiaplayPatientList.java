@@ -69,7 +69,7 @@ public class DiaplayPatientList extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
 
-            myDialogue.setContentView(R.layout.dialog_otp_progress);
+            myDialogue.setContentView(R.layout.dialog_general_progress);
             myDialogue.setCanceledOnTouchOutside(FALSE);
             Objects.requireNonNull(myDialogue.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             myDialogue.show();
@@ -87,7 +87,7 @@ public class DiaplayPatientList extends AppCompatActivity {
 
                     if(jsonObject.length() > 0) {
 
-                        JSONArray array = jsonObject.getJSONArray(Keys.sheetID);
+                        JSONArray array = jsonObject.getJSONArray("Raw_Data");
 
                         int lenArray = array.length();
                         len = lenArray;
@@ -117,10 +117,10 @@ public class DiaplayPatientList extends AppCompatActivity {
                                     String patient_status = innerObject.getString("Current_Status");
                                     String patient_notes = innerObject.getString("Notes");
                                     model = new PatientModel(patient_info, detection_location, patient_date, patient_status, patient_notes);
-
                                 }
+
+                                patientModels.add(model);
                             }
-                            patientModels.add(model);
                         }
                     }
                 } else {
