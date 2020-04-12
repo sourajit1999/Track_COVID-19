@@ -16,7 +16,7 @@
         android:roundIcon="@drawable/trackcovid"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DisplayActivity"></activity>
+        <activity android:name=".DatabaseListActivity"></activity>
         <activity android:name=".RegistrationFormPost" />
         <activity
             android:name=".LoginActivity"

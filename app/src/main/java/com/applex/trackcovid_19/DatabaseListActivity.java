@@ -5,13 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-public class DisplayActivity extends AppCompatActivity {
+public class DatabaseListActivity extends AppCompatActivity {
     TextView database1, database2, database3, database4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_display);
+        setContentView(R.layout.activity_database_list);
 
         database1=findViewById(R.id.database1);
         database2=findViewById(R.id.database2);
