@@ -23,7 +23,7 @@ public class JSONParser {
 
     public JSONParser(String id) {
 
-       MAIN_URL = "https://script.google.com/macros/s/AKfycbxOLElujQcy1-ZUer1KgEvK16gkTLUqYftApjNCM_IRTL3HSuDk/exec?id="+id+"&sheet=Sheet1";
+       MAIN_URL = "https://script.google.com/macros/s/AKfycbxOLElujQcy1-ZUer1KgEvK16gkTLUqYftApjNCM_IRTL3HSuDk/exec?id="+id;
 
     }
 
