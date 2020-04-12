@@ -270,8 +270,6 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-
-
     void SignInGoogle() {
         Intent signintent = mGooglesigninclient.getSignInIntent();
         startActivityForResult(signintent, GOOGLE_SIGN);

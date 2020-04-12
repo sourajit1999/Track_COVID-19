@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,6 +7,12 @@
     tools:context=".DatabaseListActivity"
     android:orientation="vertical"
     android:background="@color/cardview_shadow_end_color">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@null"
+        android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
@@ -105,7 +111,10 @@
         android:text="Gathering History"
         android:gravity="center"
         android:textSize="20sp"
+        android:layout_marginBottom="30dp"
         android:fontFamily="@font/lato_regular"
         android:textColor="@color/colorPrimary"/>
 
-</LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

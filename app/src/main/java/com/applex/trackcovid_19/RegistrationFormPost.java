@@ -27,20 +27,22 @@ public class RegistrationFormPost extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration_form_post);
-        registrationID=findViewById(R.id.reg_id);
-        go=findViewById(R.id.go);
-        mAuth= FirebaseAuth.getInstance();
+
+        registrationID = findViewById(R.id.reg_id);
+        go = findViewById(R.id.go);
+        mAuth = FirebaseAuth.getInstance();
         final FirebaseUser fireuser = mAuth.getCurrentUser();
         final Intent i = getIntent();
         email = i.getStringExtra("email");
         password = i.getStringExtra("password");
-        email=mAuth.getCurrentUser().getEmail();
+        email = mAuth.getCurrentUser().getEmail();
 
         go.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
               final String input_id= registrationID.getText().toString().trim();
+
                 mAuth.signInWithEmailAndPassword(email,password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             public void onComplete(@NonNull Task<AuthResult> task) {
