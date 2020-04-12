@@ -15,7 +15,6 @@
         android:roundIcon="@drawable/trackcovid"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DiaplayPatientList"></activity>
         <activity android:name=".ChooseListActivity" />
         <activity android:name=".RegistrationFormPost" />
         <activity
@@ -39,6 +38,11 @@
             android:label="@string/title_activity_home_page"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".TwitterActivity" />
+
+        <activity android:name=".DiaplayGatheringList" />
+        <activity android:name=".DiaplayPatientList" />
+
+
     </application>
 
 </manifest>
