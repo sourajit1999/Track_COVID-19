@@ -12,6 +12,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.applex.trackcovid_19.adapters.PatientAdapter;
 import com.applex.trackcovid_19.models.PatientModel;
 import com.applex.trackcovid_19.util.JSONParser;
 import com.applex.trackcovid_19.util.Keys;
@@ -40,7 +41,8 @@ public class DiaplayPatientList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diaplay_patient_list);
 
-        myDialogue = new Dialog(getApplicationContext());
+
+
         recyclerView = findViewById(R.id.covid_list) ;
         patientModels = new ArrayList<>();
 
@@ -54,6 +56,7 @@ public class DiaplayPatientList extends AppCompatActivity {
     private void buildRecyclerView(){
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setAdapter(new PatientAdapter(patientModels,getApplicationContext()));
 
     }
 
@@ -62,17 +65,14 @@ public class DiaplayPatientList extends AppCompatActivity {
         int jIndex=0;
         int len;
 
-        String modelTeamName;
-        String modelTeamID;
-
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-
-            myDialogue.setContentView(R.layout.dialog_general_progress);
-            myDialogue.setCanceledOnTouchOutside(FALSE);
-            Objects.requireNonNull(myDialogue.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            myDialogue.show();
+//            myDialogue = new Dialog(getApplicationContext());
+//            myDialogue.setContentView(R.layout.dialog_general_progress);
+//            myDialogue.setCanceledOnTouchOutside(FALSE);
+//            Objects.requireNonNull(myDialogue.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//            myDialogue.show();
         }
 
         @Nullable
@@ -140,7 +140,7 @@ public class DiaplayPatientList extends AppCompatActivity {
              * Update ListView
              */
 
-            myDialogue.dismiss();
+//            myDialogue.dismiss();
             buildRecyclerView();
 
         }

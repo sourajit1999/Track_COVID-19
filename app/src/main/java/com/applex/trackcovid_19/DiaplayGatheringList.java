@@ -9,6 +9,7 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.applex.trackcovid_19.adapters.BusAdapter;
@@ -52,7 +53,6 @@ public class DiaplayGatheringList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diaplay_patient_list);
 
-        myDialogue = new Dialog(getApplicationContext());
         recyclerView = findViewById(R.id.covid_list) ;
 
         if(getIntent().getStringExtra("Selection")!=null)
@@ -75,6 +75,7 @@ public class DiaplayGatheringList extends AppCompatActivity {
             id = Keys.Sheet4_Sheet_id;
         }
 
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         new GetDataTask().execute();
 
     }
@@ -93,10 +94,11 @@ public class DiaplayGatheringList extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
 
-            myDialogue.setContentView(R.layout.dialog_general_progress);
-            myDialogue.setCanceledOnTouchOutside(FALSE);
-            Objects.requireNonNull(myDialogue.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            myDialogue.show();
+//            myDialogue = new Dialog(getApplicationContext());
+//            myDialogue.setContentView(R.layout.dialog_general_progress);
+//            myDialogue.setCanceledOnTouchOutside(FALSE);
+//            Objects.requireNonNull(myDialogue.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//            myDialogue.show();
 
         }
 
@@ -208,7 +210,7 @@ public class DiaplayGatheringList extends AppCompatActivity {
                 recyclerView.setAdapter(gatheringAdapter);
             }
 
-            myDialogue.dismiss();
+//            myDialogue.dismiss();
 
 
         }
