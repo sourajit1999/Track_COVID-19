@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
@@ -16,7 +15,8 @@
         android:roundIcon="@drawable/trackcovid"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DatabaseListActivity"></activity>
+        <activity android:name=".DiaplayPatientList"></activity>
+        <activity android:name=".ChooseListActivity" />
         <activity android:name=".RegistrationFormPost" />
         <activity
             android:name=".LoginActivity"

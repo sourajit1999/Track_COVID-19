@@ -322,7 +322,7 @@ public class LoginActivity extends AppCompatActivity {
                                         finish();
                                     }
                                     else {
-                                        Intent i = new Intent(LoginActivity.this, DatabaseListActivity.class);
+                                        Intent i = new Intent(LoginActivity.this, ChooseListActivity.class);
                                         startActivity(i);
                                         overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
                                         finish();

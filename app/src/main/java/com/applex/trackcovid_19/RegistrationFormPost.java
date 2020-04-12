@@ -53,7 +53,7 @@ public class RegistrationFormPost extends AppCompatActivity {
 
                                     if (fireuser.isEmailVerified()) {
                                         if(input_id.matches("asdf34")){
-                                            Intent i=new Intent(getApplicationContext(), DatabaseListActivity.class);
+                                            Intent i=new Intent(getApplicationContext(), ChooseListActivity.class);
                                             startActivity(i);
                                             overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
                                             finish();

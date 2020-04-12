@@ -64,7 +64,7 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
         mSpinnerBlood = findViewById(R.id.spinnerBlood);
         myDialogue = new Dialog(HomePage.this);
 
-        myDialogue.setContentView(R.layout.jumping_panda_progress);
+        myDialogue.setContentView(R.layout.dialog_otp_progress);
         myDialogue.setCanceledOnTouchOutside(FALSE);
         myDialogue.findViewById(R.id.verify).setOnClickListener(new View.OnClickListener() {
             @Override

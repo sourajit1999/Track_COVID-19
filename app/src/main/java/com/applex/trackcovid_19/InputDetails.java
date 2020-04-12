@@ -37,10 +37,11 @@ import static java.lang.Boolean.FALSE;
 
 public class InputDetails extends AppCompatActivity {
 
-    Dialog mydialogue;
+    Dialog selDialogue;
     public int sel_ID = 0;
     String id;
     String urlLink= null;
+    Dialog progressDialogue;
 
     String phone, bloodgroup, pincode;
 
@@ -66,6 +67,8 @@ public class InputDetails extends AppCompatActivity {
     String train_num, train_nam,coach_num;
 
     String addrs, gather_date, gather_no,gather_time;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -293,44 +296,44 @@ public class InputDetails extends AppCompatActivity {
     }
 
     private void setDialog(){
-        mydialogue = new Dialog(InputDetails.this);
-        mydialogue.setContentView(R.layout.select_dialog);
-        mydialogue.setCanceledOnTouchOutside(FALSE);
-        Objects.requireNonNull(mydialogue.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        selDialogue = new Dialog(InputDetails.this);
+        selDialogue.setContentView(R.layout.select_dialog);
+        selDialogue.setCanceledOnTouchOutside(FALSE);
+        Objects.requireNonNull(selDialogue.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-        mydialogue.findViewById(R.id.flight).setOnClickListener(new View.OnClickListener() {
+        selDialogue.findViewById(R.id.flight).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sel_ID = 1;
                 customize();
-                mydialogue.dismiss();
+                selDialogue.dismiss();
             }
         });
-        mydialogue.findViewById(R.id.train).setOnClickListener(new View.OnClickListener() {
+        selDialogue.findViewById(R.id.train).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sel_ID = 2;
                 customize();
-                mydialogue.dismiss();
+                selDialogue.dismiss();
             }
         });
-        mydialogue.findViewById(R.id.bus).setOnClickListener(new View.OnClickListener() {
+        selDialogue.findViewById(R.id.bus).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sel_ID = 3;
                 customize();
-                mydialogue.dismiss();
+                selDialogue.dismiss();
             }
         });
-        mydialogue.findViewById(R.id.gathering).setOnClickListener(new View.OnClickListener() {
+        selDialogue.findViewById(R.id.gathering).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sel_ID = 4;
                 customize();
-                mydialogue.dismiss();
+                selDialogue.dismiss();
             }
         });
-        mydialogue.show();
+        selDialogue.show();
     }
 
     private void customize(){
@@ -381,10 +384,12 @@ public class InputDetails extends AppCompatActivity {
             ////////////SELECT SHEET////////////
 
             ////////////SELECT SHEET////////////
-            mydialogue = new Dialog(InputDetails.this);
-            mydialogue.setContentView(R.layout.select_dialog);
-            mydialogue.setCanceledOnTouchOutside(FALSE);
-            mydialogue.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            progressDialogue = new Dialog(getApplicationContext());
+
+            progressDialogue.setContentView(R.layout.dialog_otp_progress);
+            progressDialogue.setCanceledOnTouchOutside(FALSE);
+            Objects.requireNonNull(progressDialogue.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            progressDialogue.show();
 
         }
 
@@ -433,12 +438,11 @@ public class InputDetails extends AppCompatActivity {
                     postDataParams.put(Keys.arrivaldate,travel_a_date);
                 }
                 else if(sel_ID ==4) { //gathering
-
+                    postDataParams.put(Keys.approxGathering ,gather_no);
+                    postDataParams.put(Keys.date ,gather_date);
+                    postDataParams.put(Keys.place ,addrs);
+                    postDataParams.put(Keys.time ,gather_time);
                 }
-                postDataParams.put(Keys.approxGathering ,gather_no);
-                postDataParams.put(Keys.date ,gather_date);
-                postDataParams.put(Keys.place ,addrs);
-                postDataParams.put(Keys.time ,gather_time);
 
 
                 //INSERT SHEET ID
@@ -492,16 +496,10 @@ public class InputDetails extends AppCompatActivity {
 
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            mydialogue.dismiss();
+            progressDialogue.dismiss();
             Intent intent = new Intent(InputDetails.this, SuccessActivity.class);
-//            intent.putExtra("value","submit");
-//            intent.putExtra("name",name);
-//            intent.putExtra("email",email);
-//            intent.putExtra("pic",pic);
             startActivity(intent);
-//            overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
             finish();
-
         }
     }
 

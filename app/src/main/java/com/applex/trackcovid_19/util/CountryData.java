@@ -1,4 +1,4 @@
-package com.applex.trackcovid_19;
+package com.applex.trackcovid_19.util;
 
 public class CountryData {
     public static final String[] countryNames = {"Afghanistan", "Albania",

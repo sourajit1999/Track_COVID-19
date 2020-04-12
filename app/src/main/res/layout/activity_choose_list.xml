@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DatabaseListActivity"
+    tools:context=".ChooseListActivity"
     android:orientation="vertical"
     android:background="@color/cardview_shadow_end_color">
 
@@ -23,7 +23,7 @@
         android:layout_marginStart="20dp"
         android:text="COVID-19 Database"
         android:textColor="#4C4D53"
-        android:textSize="20sp"
+        android:textSize="22sp"
         android:textStyle="bold" />
 
     <View
@@ -35,7 +35,7 @@
         tools:layout_editor_absoluteY="69dp" />
 
     <TextView
-        android:id="@+id/database1"
+        android:id="@+id/patient"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="@drawable/field_layout"
@@ -55,7 +55,7 @@
         android:layout_marginStart="20dp"
         android:text="Passengers' Travel History"
         android:textColor="#4C4D53"
-        android:textSize="20sp"
+        android:textSize="22sp"
         android:textStyle="bold"
         android:fontFamily="@font/lato_black" />
     <View
@@ -68,47 +68,47 @@
         tools:layout_editor_absoluteY="69dp" />
 
     <TextView
-        android:id="@+id/database2"
+        android:id="@+id/Flight"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="@drawable/field_layout"
         android:layout_margin="20dp"
-        android:text="Flight History"
+        android:text="Flight Travellers"
         android:gravity="center"
         android:textSize="20sp"
         android:fontFamily="@font/lato_regular"
         android:textColor="@color/colorPrimary"/>
 
     <TextView
-        android:id="@+id/database3"
+        android:id="@+id/Railway"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="@drawable/field_layout"
         android:layout_marginHorizontal="20dp"
-        android:text="Railway History"
+        android:text="Railway Travellers"
         android:gravity="center"
         android:textSize="20sp"
         android:fontFamily="@font/lato_regular"
         android:textColor="@color/colorPrimary"/>
 
     <TextView
-        android:id="@+id/database4"
+        android:id="@+id/Bus"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="@drawable/field_layout"
         android:layout_margin="20dp"
-        android:text="Bus Travel History"
+        android:text="Bus Travellers"
         android:gravity="center"
         android:textSize="20sp"
         android:fontFamily="@font/lato_regular"
         android:textColor="@color/colorPrimary"/>
     <TextView
-        android:id="@+id/database5"
+        android:id="@+id/Gathering"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:background="@drawable/field_layout"
         android:layout_marginHorizontal="20dp"
-        android:text="Gathering History"
+        android:text="Gathering Attendees"
         android:gravity="center"
         android:textSize="20sp"
         android:layout_marginBottom="30dp"
