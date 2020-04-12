@@ -15,7 +15,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.applex.trackcovid_19.util.Keys;
 
@@ -35,7 +34,6 @@ import java.util.Objects;
 import javax.net.ssl.HttpsURLConnection;
 
 import static java.lang.Boolean.FALSE;
-import static java.lang.Boolean.logicalAnd;
 
 public class InputDetails extends AppCompatActivity {
 
@@ -72,7 +70,7 @@ public class InputDetails extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.element_recyclerview);
+        setContentView(R.layout.activity_layout_details);
 
         travel = findViewById(R.id.traveldetails);
         train = findViewById(R.id.traindetails);
