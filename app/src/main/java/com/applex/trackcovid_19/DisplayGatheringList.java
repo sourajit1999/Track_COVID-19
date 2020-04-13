@@ -112,11 +112,6 @@ public class DisplayGatheringList extends AppCompatActivity {
         int jIndex=0;
         int len;
 
-        BusModel busModel = null;
-        TrainModel trainModel = null;
-        FlightModel flightModel = null;
-        GatheringModel gatheringModel = null;
-
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -159,48 +154,62 @@ public class DisplayGatheringList extends AppCompatActivity {
                         len = lenArray;
 
                         if(lenArray > 0) {
-                            jIndex = 1;
-                            for(; jIndex < len; jIndex++) {
+
+                            for(; jIndex < lenArray; jIndex++) {
+
+                                BusModel busModel = new BusModel();
+                                TrainModel trainModel = new TrainModel();
+                                FlightModel flightModel = new FlightModel();
+                                GatheringModel gatheringModel = new GatheringModel();
 
                                 JSONObject innerObject = array.getJSONObject(jIndex);
 
-                                String contact = innerObject.getString(Keys.contact);
-                                String blood_group = innerObject.getString(Keys.bloodgroup);
-                                String pincode = innerObject.getString(Keys.pincode);
+                                String contact = innerObject.getString("Contact");
+                                String blood_group = innerObject.getString("BloodGroup");
+                                String pincode = innerObject.getString("Pincode");
 
-                                if(sel_ID!= 5){
-                                    String depart_date = innerObject.getString(Keys.departuredate);
-                                    String depart_from = innerObject.getString(Keys.from);
-                                    String arrival_date = innerObject.getString(Keys.arrivaldate);
-                                    String arrival_to = innerObject.getString(Keys.to);
-                                    if(sel_ID ==2){
-                                        String flight_no = innerObject.getString(Keys.flightNo);
-                                        flightModel = new FlightModel(contact, blood_group, pincode,depart_date,depart_from,arrival_date,arrival_to,flight_no);
+//                                if(sel_ID!= 5){
+                                    String depart_date = innerObject.getString("Departure_Date");
+                                    String depart_from = innerObject.getString("From");
+                                    String arrival_date = innerObject.getString("Arrival_Date");
+                                    String arrival_to = innerObject.getString("To");
+//                                    if(sel_ID ==2){
+//                                        String flight_no = innerObject.getString("FlightNo");
+                                        flightModel.setContact(contact);
+                                        flightModel.setBlood_group(blood_group);
+                                        flightModel.setPincode(pincode);
+                                        flightModel.setDepart_date(depart_date);
+                                        flightModel.setDepart_from(depart_from);
+                                        flightModel.setArrival_date(arrival_date);
+                                        flightModel.setArrival_to(arrival_to);
+                                        flightModel.setFlight_no("1233445");
                                         flightModels.add(flightModel);
-                                    }
-                                    else if(sel_ID == 3){
-                                        String train_no = innerObject.getString(Keys.trainNo);
-                                        String train_name = innerObject.getString(Keys.trainName);
-                                        String coach_no = innerObject.getString(Keys.coachNo);
-                                        trainModel = new TrainModel(contact, blood_group, pincode,depart_date,depart_from,arrival_date,arrival_to,train_no,train_name,coach_no);
-                                        trainModels.add(trainModel);
 
-                                    }
-                                    else{
-                                        busModel = new BusModel(contact, blood_group, pincode,depart_date,depart_from,arrival_date,arrival_to);
-                                        busModels.add(busModel);
-                                    }
 
-                                }
-
-                                else{
-                                    String date = innerObject.getString(Keys.date);
-                                    String time = innerObject.getString(Keys.time);
-                                    String place = innerObject.getString(Keys.place);
-                                    String size = innerObject.getString(Keys.approxGathering);
-                                    gatheringModel = new GatheringModel(contact, blood_group, pincode,date,time,place,size);
-                                    gatheringModels.add(gatheringModel);
-                                }
+//                                    }
+//                                    else if(sel_ID == 3){
+//                                        String train_no = innerObject.getString("TrainNo");
+//                                        String train_name = innerObject.getString("TrainName");
+//                                        String coach_no = innerObject.getString("Coach_No");
+//                                        trainModel = new TrainModel(contact, blood_group, pincode,depart_date,depart_from,arrival_date,arrival_to,train_no,train_name,coach_no);
+//                                        trainModels.add(trainModel);
+//
+//                                    }
+//                                    else{
+//                                        busModel = new BusModel(contact, blood_group, pincode,depart_date,depart_from,arrival_date,arrival_to);
+//                                        busModels.add(busModel);
+//                                    }
+//
+//                                }
+//
+//                                else{
+//                                    String date = innerObject.getString(Keys.date);
+//                                    String time = innerObject.getString(Keys.time);
+//                                    String place = innerObject.getString(Keys.place);
+//                                    String size = innerObject.getString("ApproxGathering");
+//                                    gatheringModel = new GatheringModel(contact, blood_group, pincode,date,time,place,size);
+//                                    gatheringModels.add(gatheringModel);
+//                                }
 
                             }
 
