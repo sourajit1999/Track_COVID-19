@@ -78,25 +78,24 @@ public class DisplayGatheringList extends AppCompatActivity {
             sel_ID = Integer.parseInt(getIntent().getStringExtra("Selection"));
 
         if(sel_ID == 2){
-//            Objects.requireNonNull(getSupportActionBar()).setTitle("Flight");
+            Objects.requireNonNull(getSupportActionBar()).setTitle("Flight");
             id = Keys.Sheet1_Sheet_id;
             flightAdapter = new FlightAdapter(flightModels);
             recyclerView.setAdapter(flightAdapter);
         }
         if(sel_ID == 3){
-//            getSupportActionBar().setTitle("Railway");
             id = Keys.Sheet2_Sheet_id;
             trainAdapter = new TrainAdapter(trainModels);
             recyclerView.setAdapter(trainAdapter);
         }
         if(sel_ID == 4){
-//            getSupportActionBar().setTitle("Bus");
+            getSupportActionBar().setTitle("Bus");
             id = Keys.Sheet3_Sheet_id;
             busAdapter = new BusAdapter(busModels);
             recyclerView.setAdapter(busAdapter);
         }
         if(sel_ID == 5){
-//            getSupportActionBar().setTitle("Gathering");
+            getSupportActionBar().setTitle("Gathering");
             id = Keys.Sheet4_Sheet_id;
             gatheringAdapter = new GatheringAdapter(gatheringModels);
             recyclerView.setAdapter(gatheringAdapter);
@@ -118,11 +117,11 @@ public class DisplayGatheringList extends AppCompatActivity {
 
             Toast.makeText(DisplayGatheringList.this, sel_ID+".", Toast.LENGTH_LONG).show();
 
-//            myDialogue = new Dialog(getApplicationContext());
-//            myDialogue.setContentView(R.layout.dialog_general_progress);
-//            myDialogue.setCanceledOnTouchOutside(FALSE);
-//            Objects.requireNonNull(myDialogue.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//            myDialogue.show();
+            myDialogue = new Dialog(getApplicationContext());
+            myDialogue.setContentView(R.layout.dialog_general_progress);
+            myDialogue.setCanceledOnTouchOutside(FALSE);
+            Objects.requireNonNull(myDialogue.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            myDialogue.show();
 
         }
 
@@ -167,14 +166,16 @@ public class DisplayGatheringList extends AppCompatActivity {
                                 String contact = innerObject.getString("Contact");
                                 String blood_group = innerObject.getString("BloodGroup");
                                 String pincode = innerObject.getString("Pincode");
+                                String no = Integer.toString(jIndex+1);
 
-//                                if(sel_ID!= 5){
+                                if(sel_ID!= 5){
                                     String depart_date = innerObject.getString("Departure_Date");
                                     String depart_from = innerObject.getString("From");
                                     String arrival_date = innerObject.getString("Arrival_Date");
                                     String arrival_to = innerObject.getString("To");
-//                                    if(sel_ID ==2){
+                                    if(sel_ID ==2){
 //                                        String flight_no = innerObject.getString("FlightNo");
+                                        flightModel.setNo(no);
                                         flightModel.setContact(contact);
                                         flightModel.setBlood_group(blood_group);
                                         flightModel.setPincode(pincode);
@@ -182,34 +183,59 @@ public class DisplayGatheringList extends AppCompatActivity {
                                         flightModel.setDepart_from(depart_from);
                                         flightModel.setArrival_date(arrival_date);
                                         flightModel.setArrival_to(arrival_to);
-                                        flightModel.setFlight_no("1233445");
+                                        flightModel.setFlight_no("112376");
                                         flightModels.add(flightModel);
+                                    }
+                                    else if(sel_ID == 3){
+                                        String train_no = innerObject.getString("TrainNo");
+                                        String train_name = innerObject.getString("TrainName");
+                                        String coach_no = innerObject.getString("Coach_No");
+                                        trainModel.setContact(contact);
+                                        trainModel.setBlood_group(blood_group);
+                                        trainModel.setPincode(pincode);
+                                        trainModel.setDepart_date(depart_date);
+                                        trainModel.setDepart_from(depart_from);
+                                        trainModel.setArrival_date(arrival_date);
+                                        trainModel.setArrival_to(arrival_to);
+                                        trainModel.setTrain_no(train_no);
+                                        trainModel.setTrain_name(train_name);
+                                        trainModel.setCoach_no(coach_no);
+                                        trainModel.setNo(no);
 
+                                        trainModels.add(trainModel);
 
-//                                    }
-//                                    else if(sel_ID == 3){
-//                                        String train_no = innerObject.getString("TrainNo");
-//                                        String train_name = innerObject.getString("TrainName");
-//                                        String coach_no = innerObject.getString("Coach_No");
-//                                        trainModel = new TrainModel(contact, blood_group, pincode,depart_date,depart_from,arrival_date,arrival_to,train_no,train_name,coach_no);
-//                                        trainModels.add(trainModel);
-//
-//                                    }
-//                                    else{
-//                                        busModel = new BusModel(contact, blood_group, pincode,depart_date,depart_from,arrival_date,arrival_to);
-//                                        busModels.add(busModel);
-//                                    }
-//
-//                                }
-//
-//                                else{
-//                                    String date = innerObject.getString(Keys.date);
-//                                    String time = innerObject.getString(Keys.time);
-//                                    String place = innerObject.getString(Keys.place);
-//                                    String size = innerObject.getString("ApproxGathering");
-//                                    gatheringModel = new GatheringModel(contact, blood_group, pincode,date,time,place,size);
-//                                    gatheringModels.add(gatheringModel);
-//                                }
+                                    }
+                                    else{
+                                        busModel.setNo(no);
+
+                                        busModel.setContact(contact);
+                                        busModel.setBlood_group(blood_group);
+                                        busModel.setPincode(pincode);
+                                        busModel.setDepart_date(depart_date);
+                                        busModel.setDepart_from(depart_from);
+                                        busModel.setArrival_date(arrival_date);
+                                        busModel.setArrival_to(arrival_to);
+                                        busModels.add(busModel);
+                                    }
+
+                                }
+
+                                else{
+                                    String date = innerObject.getString(Keys.date);
+                                    String time = innerObject.getString(Keys.time);
+                                    String place = innerObject.getString(Keys.place);
+                                    String size = innerObject.getString("ApproxGathering");
+                                    gatheringModel.setNo(no);
+                                    gatheringModel.setContact(contact);
+                                    gatheringModel.setBlood_group(blood_group);
+                                    gatheringModel.setPincode(pincode);
+                                    gatheringModel.setDate(date);
+                                    gatheringModel.setTime(time);
+                                    gatheringModel.setSize(size);
+                                    gatheringModel.setPlace(place);
+
+                                    gatheringModels.add(gatheringModel);
+                                }
 
                             }
 
@@ -249,7 +275,7 @@ public class DisplayGatheringList extends AppCompatActivity {
                 Toast.makeText(DisplayGatheringList.this, len + "Gathering" + jIndex, Toast.LENGTH_LONG).show();
             }
 
-//            myDialogue.dismiss();
+            myDialogue.dismiss();
 
         }
     }

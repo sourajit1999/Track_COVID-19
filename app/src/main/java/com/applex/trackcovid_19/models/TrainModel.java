@@ -1,6 +1,9 @@
 package com.applex.trackcovid_19.models;
 
 public class TrainModel {
+
+    String no;
+
     String contact;
     String blood_group;
     String pincode;
@@ -28,6 +31,14 @@ public class TrainModel {
         this.train_no = train_no;
         this.train_name = train_name;
         this.coach_no = coach_no;
+    }
+
+    public String getNo() {
+        return no;
+    }
+
+    public void setNo(String no) {
+        this.no = no;
     }
 
     public String getContact() {

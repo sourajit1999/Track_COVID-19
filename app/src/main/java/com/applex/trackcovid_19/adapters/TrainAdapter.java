@@ -31,7 +31,7 @@ public class TrainAdapter extends RecyclerView.Adapter<TrainAdapter.ProgrammingV
     @Override
     public ProgrammingViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.item_bus_list,viewGroup,false);
+                .inflate(R.layout.item_rail_list,viewGroup,false);
         return new ProgrammingViewHolder(v);
     }
 
@@ -65,6 +65,7 @@ public class TrainAdapter extends RecyclerView.Adapter<TrainAdapter.ProgrammingV
         programmingViewHolder.train_no.setText("Train No. " + currentItem.getTrain_no());
         programmingViewHolder.train_name.setText("Train Name: " + currentItem.getTrain_name());
         programmingViewHolder.coach_no.setText("Coach Details: " + currentItem.getCoach_no());
+        programmingViewHolder.patient_no.setText(currentItem.getNo());
 
 
     }
@@ -91,6 +92,7 @@ public class TrainAdapter extends RecyclerView.Adapter<TrainAdapter.ProgrammingV
 
         TextView set_visibility;
         LinearLayout details;
+        TextView patient_no;
 
 
         private ProgrammingViewHolder(@NonNull View itemView) {
@@ -103,9 +105,10 @@ public class TrainAdapter extends RecyclerView.Adapter<TrainAdapter.ProgrammingV
             arrival_date = itemView.findViewById(R.id.arrival_date);
             arrival_to = itemView.findViewById(R.id.arrival_to);
 
-            train_no = itemView.findViewById(R.id.arrival_to);
-            train_name = itemView.findViewById(R.id.arrival_to);
-            coach_no = itemView.findViewById(R.id.arrival_to);
+            train_no = itemView.findViewById(R.id.train_no);
+            train_name = itemView.findViewById(R.id.train_name);
+            coach_no = itemView.findViewById(R.id.coach_no);
+            patient_no = itemView.findViewById(R.id.patient_no);
 
             set_visibility = itemView.findViewById(R.id.set_visibility);
             details = itemView.findViewById(R.id.details);

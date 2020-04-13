@@ -1,6 +1,7 @@
 package com.applex.trackcovid_19.models;
 
 public class FlightModel {
+    String no;
 
     String contact;
     String blood_group;
@@ -23,6 +24,14 @@ public class FlightModel {
         this.arrival_date = arrival_date;
         this.arrival_to = arrival_to;
         this.flight_no = flight_no;
+    }
+
+    public String getNo() {
+        return no;
+    }
+
+    public void setNo(String no) {
+        this.no = no;
     }
 
     public String getContact() {

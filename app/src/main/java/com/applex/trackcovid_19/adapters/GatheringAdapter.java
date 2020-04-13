@@ -59,6 +59,7 @@ public class GatheringAdapter extends RecyclerView.Adapter<GatheringAdapter.Prog
         programmingViewHolder.time.setText(currentItem.getTime());
         programmingViewHolder.place.setText(currentItem.getPlace());
         programmingViewHolder.size.setText(currentItem.getSize());
+        programmingViewHolder.patient_no.setText(currentItem.getNo());
 
 
     }
@@ -81,6 +82,7 @@ public class GatheringAdapter extends RecyclerView.Adapter<GatheringAdapter.Prog
         TextView size;
         TextView set_visibility;
         LinearLayout details;
+        TextView patient_no;
 
         private ProgrammingViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -93,6 +95,7 @@ public class GatheringAdapter extends RecyclerView.Adapter<GatheringAdapter.Prog
             size = itemView.findViewById(R.id.size);
             set_visibility = itemView.findViewById(R.id.set_visibility);
             details = itemView.findViewById(R.id.details);
+            patient_no = itemView.findViewById(R.id.patient_no);
 
         }
     }

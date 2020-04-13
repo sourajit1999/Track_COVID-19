@@ -59,6 +59,7 @@ public class BusAdapter extends RecyclerView.Adapter<BusAdapter.ProgrammingViewH
         programmingViewHolder.depart_from.setText(currentItem.getDepart_from());
         programmingViewHolder.arrival_date.setText(currentItem.getArrival_date());
         programmingViewHolder.arrival_to.setText(currentItem.getArrival_to());
+        programmingViewHolder.patient_no.setText(currentItem.getNo());
 
     }
 
@@ -81,6 +82,8 @@ public class BusAdapter extends RecyclerView.Adapter<BusAdapter.ProgrammingViewH
 
         TextView set_visibility;
         LinearLayout details;
+        TextView patient_no;
+
 
 
         private ProgrammingViewHolder(@NonNull View itemView) {
@@ -92,6 +95,7 @@ public class BusAdapter extends RecyclerView.Adapter<BusAdapter.ProgrammingViewH
             depart_from = itemView.findViewById(R.id.depart_from);
             arrival_date = itemView.findViewById(R.id.arrival_date);
             arrival_to = itemView.findViewById(R.id.arrival_to);
+            patient_no = itemView.findViewById(R.id.patient_no);
 
             set_visibility = itemView.findViewById(R.id.set_visibility);
             details = itemView.findViewById(R.id.details);

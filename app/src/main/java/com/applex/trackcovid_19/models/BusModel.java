@@ -2,6 +2,7 @@ package com.applex.trackcovid_19.models;
 
 public class BusModel {
 
+    String no;
     private String contact;
     String blood_group;
     String pincode;
@@ -22,6 +23,14 @@ public class BusModel {
         this.arrival_date = arrival_date;
         this.arrival_to = arrival_to;
 
+    }
+
+    public String getNo() {
+        return no;
+    }
+
+    public void setNo(String no) {
+        this.no = no;
     }
 
     public String getContact() {

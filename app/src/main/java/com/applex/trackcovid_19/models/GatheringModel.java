@@ -1,6 +1,7 @@
 package com.applex.trackcovid_19.models;
 
 public class GatheringModel {
+    String no;
 
     String contact;
     String blood_group;
@@ -21,6 +22,14 @@ public class GatheringModel {
         this.time = time;
         this.place = place;
         this.size = size;
+    }
+
+    public String getNo() {
+        return no;
+    }
+
+    public void setNo(String no) {
+        this.no = no;
     }
 
     public String getContact() {

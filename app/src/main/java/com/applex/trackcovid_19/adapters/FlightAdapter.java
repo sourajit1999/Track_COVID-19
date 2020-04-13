@@ -63,6 +63,7 @@ public class FlightAdapter extends RecyclerView.Adapter<FlightAdapter.Programmin
         programmingViewHolder.arrival_date.setText(currentItem.getArrival_date());
         programmingViewHolder.arrival_to.setText(currentItem.getArrival_to());
         programmingViewHolder.flight_no.setText("Flight No. " + currentItem.getFlight_no());
+        programmingViewHolder.patient_no.setText(currentItem.getNo());
 
     }
 
@@ -86,6 +87,7 @@ public class FlightAdapter extends RecyclerView.Adapter<FlightAdapter.Programmin
 
         TextView set_visibility;
         LinearLayout details;
+        TextView patient_no;
 
 
         private ProgrammingViewHolder(@NonNull View itemView) {
@@ -98,6 +100,7 @@ public class FlightAdapter extends RecyclerView.Adapter<FlightAdapter.Programmin
             arrival_date = itemView.findViewById(R.id.arrival_date);
             arrival_to = itemView.findViewById(R.id.arrival_to);
             flight_no = itemView.findViewById(R.id.flight_no);
+            patient_no = itemView.findViewById(R.id.patient_no);
 
             set_visibility = itemView.findViewById(R.id.set_visibility);
             details = itemView.findViewById(R.id.details);
