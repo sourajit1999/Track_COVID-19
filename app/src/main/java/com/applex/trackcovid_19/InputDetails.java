@@ -9,6 +9,8 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.renderscript.ScriptGroup;
+import android.telecom.InCallService;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -384,11 +386,11 @@ public class InputDetails extends AppCompatActivity {
             ////////////SELECT SHEET////////////
 
             ////////////SELECT SHEET////////////
-//            progressDialogue = new Dialog(getApplicationContext());
-//            progressDialogue.setContentView(R.layout.dialog_otp_progress);
-//            progressDialogue.setCanceledOnTouchOutside(FALSE);
-//            Objects.requireNonNull(progressDialogue.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//            progressDialogue.show();
+            progressDialogue = new Dialog(InputDetails.this);
+            progressDialogue.setContentView(R.layout.dialog_general_progress);
+            progressDialogue.setCanceledOnTouchOutside(FALSE);
+            Objects.requireNonNull(progressDialogue.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            progressDialogue.show();
 
         }
 
@@ -495,7 +497,7 @@ public class InputDetails extends AppCompatActivity {
 
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-//            progressDialogue.dismiss();
+            progressDialogue.dismiss();
             Intent intent = new Intent(InputDetails.this, SuccessActivity.class);
             startActivity(intent);
             finish();
