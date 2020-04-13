@@ -6,6 +6,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -14,6 +16,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.applex.trackcovid_19.adapters.BusAdapter;
 import com.applex.trackcovid_19.adapters.FlightAdapter;
 import com.applex.trackcovid_19.adapters.GatheringAdapter;
@@ -40,7 +43,6 @@ public class DisplayGatheringList extends AppCompatActivity {
 
     String id="";
 
-    Dialog myDialogue;
 
     int sel_ID = 0;
 
@@ -78,7 +80,7 @@ public class DisplayGatheringList extends AppCompatActivity {
             sel_ID = Integer.parseInt(getIntent().getStringExtra("Selection"));
 
         if(sel_ID == 2){
-            Objects.requireNonNull(getSupportActionBar()).setTitle("Flight");
+//            Objects.requireNonNull(getSupportActionBar()).setTitle("Flight");
             id = Keys.Sheet1_Sheet_id;
             flightAdapter = new FlightAdapter(flightModels);
             recyclerView.setAdapter(flightAdapter);
@@ -89,13 +91,12 @@ public class DisplayGatheringList extends AppCompatActivity {
             recyclerView.setAdapter(trainAdapter);
         }
         if(sel_ID == 4){
-            getSupportActionBar().setTitle("Bus");
+//            getSupportActionBar().setTitle("Bus");
             id = Keys.Sheet3_Sheet_id;
             busAdapter = new BusAdapter(busModels);
             recyclerView.setAdapter(busAdapter);
         }
         if(sel_ID == 5){
-            getSupportActionBar().setTitle("Gathering");
             id = Keys.Sheet4_Sheet_id;
             gatheringAdapter = new GatheringAdapter(gatheringModels);
             recyclerView.setAdapter(gatheringAdapter);
@@ -115,14 +116,13 @@ public class DisplayGatheringList extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
 
-            Toast.makeText(DisplayGatheringList.this, sel_ID+".", Toast.LENGTH_LONG).show();
-
-            myDialogue = new Dialog(getApplicationContext());
-            myDialogue.setContentView(R.layout.dialog_general_progress);
-            myDialogue.setCanceledOnTouchOutside(FALSE);
-            Objects.requireNonNull(myDialogue.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            myDialogue.show();
-
+//            Toast.makeText(DisplayGatheringList.this, sel_ID+".", Toast.LENGTH_LONG).show();
+//
+//            myDialogue = new Dialog(DisplayGatheringList.this);
+//            myDialogue.setContentView(R.layout.dialog_otp_progress);
+//            myDialogue.setCanceledOnTouchOutside(FALSE);
+//            Objects.requireNonNull(myDialogue.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//            myDialogue.show();
         }
 
         @Nullable
@@ -256,26 +256,26 @@ public class DisplayGatheringList extends AppCompatActivity {
 
             if(sel_ID ==2){
                 flightAdapter.notifyDataSetChanged();
-                Toast.makeText(DisplayGatheringList.this, len + "Flight" + jIndex, Toast.LENGTH_LONG).show();
+//                Toast.makeText(DisplayGatheringList.this, len + "Flight" + jIndex, Toast.LENGTH_LONG).show();
 
             }
 
             else if(sel_ID == 3){
                 trainAdapter.notifyDataSetChanged();
-                Toast.makeText(DisplayGatheringList.this, len + " Train " + jIndex, Toast.LENGTH_LONG).show();
+//                Toast.makeText(DisplayGatheringList.this, len + " Train " + jIndex, Toast.LENGTH_LONG).show();
             }
 
             else if(sel_ID == 4){
                 busAdapter.notifyDataSetChanged();
-                Toast.makeText(DisplayGatheringList.this, len + "Bus" + jIndex, Toast.LENGTH_LONG).show();
+//                Toast.makeText(DisplayGatheringList.this, len + "Bus" + jIndex, Toast.LENGTH_LONG).show();
             }
 
             else if(sel_ID == 5){
                 gatheringAdapter.notifyDataSetChanged();
-                Toast.makeText(DisplayGatheringList.this, len + "Gathering" + jIndex, Toast.LENGTH_LONG).show();
+//                Toast.makeText(DisplayGatheringList.this, len + "Gathering" + jIndex, Toast.LENGTH_LONG).show();
             }
 
-            myDialogue.dismiss();
+
 
         }
     }

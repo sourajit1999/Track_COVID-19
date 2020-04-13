@@ -246,6 +246,11 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
                     intent.putExtra("value", "loggedin");
                     startActivity(intent);
                 }
+                else{
+                    Intent intent=new Intent(HomePage.this, LoginActivity.class);
+                    startActivity(intent);
+                }
+
             }
             else {
                 Intent intent=new Intent(HomePage.this, LoginActivity.class);

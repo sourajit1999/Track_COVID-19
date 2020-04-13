@@ -384,11 +384,11 @@ public class InputDetails extends AppCompatActivity {
             ////////////SELECT SHEET////////////
 
             ////////////SELECT SHEET////////////
-            progressDialogue = new Dialog(getApplicationContext());
-            progressDialogue.setContentView(R.layout.dialog_general_progress);
-            progressDialogue.setCanceledOnTouchOutside(FALSE);
-            Objects.requireNonNull(progressDialogue.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            progressDialogue.show();
+//            progressDialogue = new Dialog(getApplicationContext());
+//            progressDialogue.setContentView(R.layout.dialog_otp_progress);
+//            progressDialogue.setCanceledOnTouchOutside(FALSE);
+//            Objects.requireNonNull(progressDialogue.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//            progressDialogue.show();
 
         }
 
@@ -495,7 +495,7 @@ public class InputDetails extends AppCompatActivity {
 
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            progressDialogue.dismiss();
+//            progressDialogue.dismiss();
             Intent intent = new Intent(InputDetails.this, SuccessActivity.class);
             startActivity(intent);
             finish();
