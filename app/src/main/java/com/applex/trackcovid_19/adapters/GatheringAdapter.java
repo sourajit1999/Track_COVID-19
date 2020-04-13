@@ -19,12 +19,10 @@ import java.util.ArrayList;
 public class GatheringAdapter extends RecyclerView.Adapter<GatheringAdapter.ProgrammingViewHolder> {
 
     private ArrayList<GatheringModel> mList;
-    private Context context;
 
 
-    public GatheringAdapter(ArrayList<GatheringModel> list, Context context) {
+    public GatheringAdapter(ArrayList<GatheringModel> list) {
         this.mList = list;
-        this.context = context;
     }
 
 

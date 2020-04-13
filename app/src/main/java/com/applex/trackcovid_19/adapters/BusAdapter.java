@@ -19,12 +19,10 @@ import java.util.ArrayList;
 public class BusAdapter extends RecyclerView.Adapter<BusAdapter.ProgrammingViewHolder> {
 
     private ArrayList<BusModel> mList;
-    private Context context;
 
 
-    public BusAdapter(ArrayList<BusModel> list, Context context) {
+    public BusAdapter(ArrayList<BusModel> list) {
         this.mList = list;
-        this.context = context;
     }
 
 

@@ -4,16 +4,18 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class PatientModel {
-    String patient_no;
-    public String patient_info;
-    public String detection_location;
-    public String patient_date;
-    public String patient_status;
-    public String patient_notes;
+    private String patient_no;
+    private String patient_info;
+    private String detection_location;
+    private String patient_date;
+    private String patient_status;
+    private String patient_notes;
+
     public PatientModel() {
     }
 
-    public PatientModel(String patient_info, String detection_location, String patient_date, String patient_status, String patient_notes) {
+    public PatientModel(String patient_no, String patient_info, String detection_location, String patient_date, String patient_status, String patient_notes) {
+        this.patient_no = patient_no;
         this.patient_info = patient_info;
         this.detection_location = detection_location;
         this.patient_date = patient_date;

@@ -6,9 +6,11 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,45 +36,70 @@ import java.util.Objects;
 
 import static java.lang.Boolean.FALSE;
 
-public class DiaplayGatheringList extends AppCompatActivity {
+public class DisplayGatheringList extends AppCompatActivity {
 
     String id="";
 
     Dialog myDialogue;
+
     int sel_ID = 0;
 
     RecyclerView recyclerView;
 
-    ArrayList<FlightModel> flightModels = new ArrayList<>();
-    ArrayList<TrainModel> trainModels = new ArrayList<>();
-    ArrayList<BusModel> busModels = new ArrayList<>();
-    ArrayList<GatheringModel> gatheringModels = new ArrayList<>();
+    ArrayList<FlightModel> flightModels;
+    ArrayList<TrainModel> trainModels;
+    ArrayList<BusModel> busModels;
+    ArrayList<GatheringModel> gatheringModels;
+
+    GatheringAdapter gatheringAdapter;
+    BusAdapter busAdapter;
+    TrainAdapter trainAdapter;
+    FlightAdapter flightAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diaplay_patient_list);
+//        Toolbar toolbar = findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+
+        flightModels = new ArrayList<>();
+        trainModels = new ArrayList<>();
+        busModels = new ArrayList<>();
+        gatheringModels = new ArrayList<>();
 
         recyclerView = findViewById(R.id.covid_list) ;
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.hasFixedSize();
+
 
         if(getIntent().getStringExtra("Selection")!=null)
             sel_ID = Integer.parseInt(getIntent().getStringExtra("Selection"));
 
         if(sel_ID == 2){
-            Objects.requireNonNull(getSupportActionBar()).setTitle("Flight");
+//            Objects.requireNonNull(getSupportActionBar()).setTitle("Flight");
             id = Keys.Sheet1_Sheet_id;
+            flightAdapter = new FlightAdapter(flightModels);
+            recyclerView.setAdapter(flightAdapter);
         }
-        if(sel_ID == 2){
-            getSupportActionBar().setTitle("Flight");
+        if(sel_ID == 3){
+//            getSupportActionBar().setTitle("Railway");
             id = Keys.Sheet2_Sheet_id;
+            trainAdapter = new TrainAdapter(trainModels);
+            recyclerView.setAdapter(trainAdapter);
         }
-        if(sel_ID == 2){
-            getSupportActionBar().setTitle("Flight");
+        if(sel_ID == 4){
+//            getSupportActionBar().setTitle("Bus");
             id = Keys.Sheet3_Sheet_id;
+            busAdapter = new BusAdapter(busModels);
+            recyclerView.setAdapter(busAdapter);
         }
-        if(sel_ID == 2){
-            getSupportActionBar().setTitle("Flight");
+        if(sel_ID == 5){
+//            getSupportActionBar().setTitle("Gathering");
             id = Keys.Sheet4_Sheet_id;
+            gatheringAdapter = new GatheringAdapter(gatheringModels);
+            recyclerView.setAdapter(gatheringAdapter);
         }
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
@@ -80,7 +107,7 @@ public class DiaplayGatheringList extends AppCompatActivity {
 
     }
 
-    class GetDataTask extends AsyncTask<Void, Void, Void> {
+    public class GetDataTask extends AsyncTask<Void, Void, Void> {
 
         int jIndex=0;
         int len;
@@ -93,6 +120,8 @@ public class DiaplayGatheringList extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+
+            Toast.makeText(DisplayGatheringList.this, sel_ID+".", Toast.LENGTH_LONG).show();
 
 //            myDialogue = new Dialog(getApplicationContext());
 //            myDialogue.setContentView(R.layout.dialog_general_progress);
@@ -130,6 +159,7 @@ public class DiaplayGatheringList extends AppCompatActivity {
                         len = lenArray;
 
                         if(lenArray > 0) {
+                            jIndex = 1;
                             for(; jIndex < len; jIndex++) {
 
                                 JSONObject innerObject = array.getJSONObject(jIndex);
@@ -163,7 +193,7 @@ public class DiaplayGatheringList extends AppCompatActivity {
 
                                 }
 
-                                else if(sel_ID == 5){
+                                else{
                                     String date = innerObject.getString(Keys.date);
                                     String time = innerObject.getString(Keys.time);
                                     String place = innerObject.getString(Keys.place);
@@ -189,29 +219,29 @@ public class DiaplayGatheringList extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            /**
-             * Checking if List size if more than zero then
-             * Update ListView
-             */
+
             if(sel_ID ==2){
-                FlightAdapter flightAdapter= new FlightAdapter(flightModels,getApplicationContext());
-                recyclerView.setAdapter(flightAdapter);
+                flightAdapter.notifyDataSetChanged();
+                Toast.makeText(DisplayGatheringList.this, len + "Flight" + jIndex, Toast.LENGTH_LONG).show();
+
             }
+
             else if(sel_ID == 3){
-                TrainAdapter trainAdapter= new TrainAdapter(trainModels,getApplicationContext());
-                recyclerView.setAdapter(trainAdapter);
+                trainAdapter.notifyDataSetChanged();
+                Toast.makeText(DisplayGatheringList.this, len + " Train " + jIndex, Toast.LENGTH_LONG).show();
             }
+
             else if(sel_ID == 4){
-                BusAdapter busAdapter= new BusAdapter(busModels,getApplicationContext());
-                recyclerView.setAdapter(busAdapter);
+                busAdapter.notifyDataSetChanged();
+                Toast.makeText(DisplayGatheringList.this, len + "Bus" + jIndex, Toast.LENGTH_LONG).show();
             }
+
             else if(sel_ID == 5){
-                GatheringAdapter gatheringAdapter= new GatheringAdapter(gatheringModels,getApplicationContext());
-                recyclerView.setAdapter(gatheringAdapter);
+                gatheringAdapter.notifyDataSetChanged();
+                Toast.makeText(DisplayGatheringList.this, len + "Gathering" + jIndex, Toast.LENGTH_LONG).show();
             }
 
 //            myDialogue.dismiss();
-
 
         }
     }

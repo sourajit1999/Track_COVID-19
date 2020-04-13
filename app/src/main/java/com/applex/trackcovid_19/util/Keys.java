@@ -44,5 +44,5 @@ public class Keys {
     public static final String Sheet4_Sheet_id = "1f5eX5L3a5Xb4Vi5amFH2d0hFgqWa-suHfh_m5XAjzTc&sheet=Sheet1";
 //https://script.google.com/macros/s/AKfycbw5Q9vOjJU0__5MLAU4wqott9rRM7tlpfHmQqUn-Zr1ZijCqYo/exec
 
-    public static final String Govt_Sheet_id = "id=1nzXUdaIWC84QipdVGUKTiCSc5xntBbpMpzLm6Si33zk&sheet=Raw_Data";
+    public static final String Govt_Sheet_id = "1nzXUdaIWC84QipdVGUKTiCSc5xntBbpMpzLm6Si33zk&sheet=Raw_Data";
 }

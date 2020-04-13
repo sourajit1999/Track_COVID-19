@@ -20,6 +20,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
@@ -238,9 +239,18 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
             startActivity(intent);
         }
         if (id == R.id.nav_login) {
-            // Handle the camera action
-            Intent intent=new Intent(HomePage.this, LoginActivity.class);
-            startActivity(intent);
+            FirebaseUser fireUser = FirebaseAuth.getInstance().getCurrentUser();
+            if(fireUser!=null) {
+                if(fireUser.isEmailVerified()){
+                    Intent intent=new Intent(HomePage.this, RegistrationFormPost.class);
+                    intent.putExtra("value", "loggedin");
+                    startActivity(intent);
+                }
+            }
+            else {
+                Intent intent=new Intent(HomePage.this, LoginActivity.class);
+                startActivity(intent);
+            }
         }
 
 

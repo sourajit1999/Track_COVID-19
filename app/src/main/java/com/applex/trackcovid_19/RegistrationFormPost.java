@@ -20,7 +20,6 @@ import com.google.firebase.auth.FirebaseUser;
 public class RegistrationFormPost extends AppCompatActivity {
     EditText registrationID;
     Button go;
-    private FirebaseAuth mAuth;
     String email,password;
 
     @Override
@@ -30,20 +29,47 @@ public class RegistrationFormPost extends AppCompatActivity {
 
         registrationID = findViewById(R.id.reg_id);
         go = findViewById(R.id.go);
-        mAuth = FirebaseAuth.getInstance();
-        final FirebaseUser fireuser = mAuth.getCurrentUser();
+        final FirebaseUser fireuser = FirebaseAuth.getInstance().getCurrentUser();
         final Intent i = getIntent();
         email = i.getStringExtra("email");
         password = i.getStringExtra("password");
-        email = mAuth.getCurrentUser().getEmail();
+        email = fireuser.getEmail();
+
 
         go.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-              final String input_id= registrationID.getText().toString().trim();
+            final String input_id= registrationID.getText().toString().trim();
 
-                mAuth.signInWithEmailAndPassword(email,password)
+            if(getIntent().getStringExtra("value").matches("loggedin")){
+                if(input_id.matches("asdf34")){
+                    Intent i=new Intent(getApplicationContext(), ChooseListActivity.class);
+                    startActivity(i);
+                    overridePendingTransition(R.anim.fade_in,R.anim.fade_out);
+                    finish();
+                }
+                else
+                    Utility.showToast(getApplicationContext(),"Enter a valid Registration ID!");
+
+            }
+
+            else if(getIntent().getStringExtra("value").matches("google")){
+                if (fireuser.isEmailVerified()) {
+                    if(input_id.matches("asdf34")){
+                        Intent i=new Intent(getApplicationContext(), ChooseListActivity.class);
+                        startActivity(i);
+                        finish();
+                    }
+                    else
+                        Utility.showToast(getApplicationContext(),"Enter a valid Registration ID!");
+                }
+                else
+                    Utility.showToast(getApplicationContext(),"Inalid Registration ID!");
+            }
+
+            else {
+                FirebaseAuth.getInstance().signInWithEmailAndPassword(email,password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (!task.isSuccessful()) {
@@ -69,6 +95,8 @@ public class RegistrationFormPost extends AppCompatActivity {
                                 }
                             }
                         });
+            }
+
 
             }
         });

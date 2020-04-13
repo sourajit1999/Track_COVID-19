@@ -28,12 +28,10 @@ import static java.lang.Boolean.TRUE;
 public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.ProgrammingViewHolder> {
 
     private ArrayList<PatientModel> mList;
-    private Context context;
 
 
-    public PatientAdapter(ArrayList<PatientModel> list, Context context) {
+    public PatientAdapter(ArrayList<PatientModel> list) {
         this.mList = list;
-        this.context = context;
     }
 
 

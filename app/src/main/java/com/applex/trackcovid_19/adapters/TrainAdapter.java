@@ -20,12 +20,10 @@ import java.util.ArrayList;
 public class TrainAdapter extends RecyclerView.Adapter<TrainAdapter.ProgrammingViewHolder> {
 
     private ArrayList<TrainModel> mList;
-    private Context context;
 
 
-    public TrainAdapter(ArrayList<TrainModel> list, Context context) {
+    public TrainAdapter(ArrayList<TrainModel> list) {
         this.mList = list;
-        this.context = context;
     }
 
 

@@ -11,6 +11,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.applex.trackcovid_19.adapters.PatientAdapter;
 import com.applex.trackcovid_19.models.PatientModel;
@@ -26,7 +27,7 @@ import java.util.Objects;
 
 import static java.lang.Boolean.FALSE;
 
-public class DiaplayPatientList extends AppCompatActivity {
+public class DisplayPatientList extends AppCompatActivity {
 
     String id="";
 
@@ -34,6 +35,7 @@ public class DiaplayPatientList extends AppCompatActivity {
     int sel_ID = 0;
 
     RecyclerView recyclerView;
+    PatientAdapter patientAdapter;
     ArrayList<PatientModel> patientModels;
 
     @Override
@@ -41,10 +43,17 @@ public class DiaplayPatientList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diaplay_patient_list);
 
-
-
-        recyclerView = findViewById(R.id.covid_list) ;
         patientModels = new ArrayList<>();
+        /////////////////RECYCLER VIEW/////////////
+        recyclerView = findViewById(R.id.covid_list) ;
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(mLayoutManager);
+        patientModels.add(new PatientModel("1285","56, Female","Nagpur, Maharashtra","28/03/2020","Hospitalised","Travelled from Italy"));
+        patientAdapter = new PatientAdapter(patientModels);
+        recyclerView.setAdapter(patientAdapter);
+
+        /////////////////RECYCLER VIEW/////////////
+
 
         if(getIntent().getStringExtra("Selection")!=null)
             sel_ID = Integer.parseInt(getIntent().getStringExtra("Selection"));
@@ -53,14 +62,8 @@ public class DiaplayPatientList extends AppCompatActivity {
 
     }
 
-    private void buildRecyclerView(){
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setAdapter(new PatientAdapter(patientModels,getApplicationContext()));
 
-    }
-
-    class GetDataTask extends AsyncTask<Void, Void, Void> {
+    public class GetDataTask extends AsyncTask<Void, Void, Void> {
 
         int jIndex=0;
         int len;
@@ -68,6 +71,9 @@ public class DiaplayPatientList extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+
+            Toast.makeText(DisplayPatientList.this, sel_ID+".", Toast.LENGTH_LONG).show();
+
 //            myDialogue = new Dialog(getApplicationContext());
 //            myDialogue.setContentView(R.layout.dialog_general_progress);
 //            myDialogue.setCanceledOnTouchOutside(FALSE);
@@ -79,7 +85,7 @@ public class DiaplayPatientList extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... params) {
 
-            JSONParser jp = new JSONParser(id);
+            JSONParser jp = new JSONParser(Keys.Govt_Sheet_id);
             JSONObject jsonObject = jp.getDataFromWeb();
             try {
 
@@ -98,26 +104,24 @@ public class DiaplayPatientList extends AppCompatActivity {
                             for(; jIndex < len; jIndex++) {
 
                                 JSONObject innerObject = array.getJSONObject(jIndex);
+                                String patient_no = innerObject.getString("Age_Bracket");
+                                String patient_info = innerObject.getString("Age_Bracket") + ", ";
 
-                                if(sel_ID == 1){
-                                    String patient_info = innerObject.getString("Age_Bracket") + ", ";
-
-                                    if(innerObject.getString("Gender").matches("F")){
-                                        patient_info = patient_info.concat("Female");
-                                    }
-                                    else if(innerObject.getString("Gender").matches("M")){
-                                        patient_info = patient_info.concat("Male");
-                                    }
-                                    else {
-                                        patient_info = patient_info.concat("Sex Unknown");
-                                    }
-
-                                    String detection_location = innerObject.getString("Detected_City") +", "+ innerObject.getString("Detected_State");
-                                    String patient_date = innerObject.getString("Date_Announced");
-                                    String patient_status = innerObject.getString("Current_Status");
-                                    String patient_notes = innerObject.getString("Notes");
-                                    model = new PatientModel(patient_info, detection_location, patient_date, patient_status, patient_notes);
+                                if(innerObject.getString("Gender").matches("F")){
+                                    patient_info = patient_info.concat("Female");
                                 }
+                                else if(innerObject.getString("Gender").matches("M")){
+                                    patient_info = patient_info.concat("Male");
+                                }
+                                else {
+                                    patient_info = patient_info.concat("Sex Unknown");
+                                }
+
+                                String detection_location = innerObject.getString("Detected_City") +", "+ innerObject.getString("Detected_State");
+                                String patient_date = innerObject.getString("Date_Announced");
+                                String patient_status = innerObject.getString("Current_Status");
+                                String patient_notes = innerObject.getString("Notes");
+                                model = new PatientModel(patient_no,patient_info, detection_location, patient_date, patient_status, patient_notes);
 
                                 patientModels.add(model);
                             }
@@ -135,14 +139,17 @@ public class DiaplayPatientList extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            /**
-             * Checking if List size if more than zero then
-             * Update ListView
-             */
 
 //            myDialogue.dismiss();
             buildRecyclerView();
 
         }
+    }
+
+
+    private void buildRecyclerView(){
+        patientAdapter.notifyDataSetChanged();
+        Toast.makeText(DisplayPatientList.this, "abcd", Toast.LENGTH_LONG).show();
+
     }
 }

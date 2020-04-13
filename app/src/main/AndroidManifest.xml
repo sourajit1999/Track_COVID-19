@@ -15,8 +15,11 @@
         android:roundIcon="@drawable/trackcovid"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".ChooseListActivity" />
+
         <activity android:name=".RegistrationFormPost" />
+
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
@@ -37,10 +40,14 @@
             android:name=".HomePage"
             android:label="@string/title_activity_home_page"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity android:name=".TwitterActivity" />
 
-        <activity android:name=".DiaplayGatheringList" />
-        <activity android:name=".DiaplayPatientList" />
+        <activity android:name=".DisplayGatheringList"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".DisplayPatientList"
+            android:theme="@style/AppTheme.NoActionBar" />
 
 
     </application>

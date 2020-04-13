@@ -20,12 +20,10 @@ import java.util.ArrayList;
 public class FlightAdapter extends RecyclerView.Adapter<FlightAdapter.ProgrammingViewHolder> {
 
     private ArrayList<FlightModel> mList;
-    private Context context;
 
 
-    public FlightAdapter(ArrayList<FlightModel> list, Context context) {
+    public FlightAdapter(ArrayList<FlightModel> list) {
         this.mList = list;
-        this.context = context;
     }
 
 
