@@ -6,8 +6,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,9 +21,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Objects;
-
-import static java.lang.Boolean.FALSE;
 
 public class DisplayPatientList extends AppCompatActivity {
 
@@ -41,7 +36,7 @@ public class DisplayPatientList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_diaplay_patient_list);
+        setContentView(R.layout.activity_display_patient_list);
 
         patientModels = new ArrayList<>();
         /////////////////RECYCLER VIEW/////////////

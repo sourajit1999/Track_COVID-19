@@ -238,6 +238,10 @@ public class HomePage extends AppCompatActivity implements NavigationView.OnNavi
             Intent intent=new Intent(HomePage.this, TwitterActivity.class);
             startActivity(intent);
         }
+        if (id == R.id.nav_globe) {
+            Intent intent=new Intent(HomePage.this, Statistics.class);
+            startActivity(intent);
+        }
         if (id == R.id.nav_login) {
             FirebaseUser fireUser = FirebaseAuth.getInstance().getCurrentUser();
             if(fireUser!=null) {

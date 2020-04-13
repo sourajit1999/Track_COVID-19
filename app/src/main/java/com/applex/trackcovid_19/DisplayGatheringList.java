@@ -6,9 +6,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,7 +14,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.airbnb.lottie.LottieAnimationView;
 import com.applex.trackcovid_19.adapters.BusAdapter;
 import com.applex.trackcovid_19.adapters.FlightAdapter;
 import com.applex.trackcovid_19.adapters.GatheringAdapter;
@@ -24,11 +21,9 @@ import com.applex.trackcovid_19.adapters.TrainAdapter;
 import com.applex.trackcovid_19.models.BusModel;
 import com.applex.trackcovid_19.models.FlightModel;
 import com.applex.trackcovid_19.models.GatheringModel;
-import com.applex.trackcovid_19.models.PatientModel;
 import com.applex.trackcovid_19.models.TrainModel;
 import com.applex.trackcovid_19.util.JSONParser;
 import com.applex.trackcovid_19.util.Keys;
-import com.google.firebase.auth.FirebaseAuth;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,7 +40,7 @@ public class DisplayGatheringList extends AppCompatActivity {
 
 
     int sel_ID = 0;
-
+    Dialog myDialogue;
     RecyclerView recyclerView;
 
     ArrayList<FlightModel> flightModels;
@@ -61,9 +56,10 @@ public class DisplayGatheringList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_diaplay_patient_list);
-//        Toolbar toolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
+        setContentView(R.layout.activity_display_gathering_list);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         flightModels = new ArrayList<>();
         trainModels = new ArrayList<>();
@@ -80,23 +76,26 @@ public class DisplayGatheringList extends AppCompatActivity {
             sel_ID = Integer.parseInt(getIntent().getStringExtra("Selection"));
 
         if(sel_ID == 2){
-//            Objects.requireNonNull(getSupportActionBar()).setTitle("Flight");
+            Objects.requireNonNull(getSupportActionBar()).setTitle("Flight Travellers");
             id = Keys.Sheet1_Sheet_id;
             flightAdapter = new FlightAdapter(flightModels);
             recyclerView.setAdapter(flightAdapter);
         }
         if(sel_ID == 3){
+            getSupportActionBar().setTitle("Railway Travellers");
+
             id = Keys.Sheet2_Sheet_id;
             trainAdapter = new TrainAdapter(trainModels);
             recyclerView.setAdapter(trainAdapter);
         }
         if(sel_ID == 4){
-//            getSupportActionBar().setTitle("Bus");
+            getSupportActionBar().setTitle("Bus Riders");
             id = Keys.Sheet3_Sheet_id;
             busAdapter = new BusAdapter(busModels);
             recyclerView.setAdapter(busAdapter);
         }
         if(sel_ID == 5){
+            getSupportActionBar().setTitle("Gathering Attendees");
             id = Keys.Sheet4_Sheet_id;
             gatheringAdapter = new GatheringAdapter(gatheringModels);
             recyclerView.setAdapter(gatheringAdapter);
@@ -118,11 +117,11 @@ public class DisplayGatheringList extends AppCompatActivity {
 
 //            Toast.makeText(DisplayGatheringList.this, sel_ID+".", Toast.LENGTH_LONG).show();
 //
-//            myDialogue = new Dialog(DisplayGatheringList.this);
-//            myDialogue.setContentView(R.layout.dialog_otp_progress);
-//            myDialogue.setCanceledOnTouchOutside(FALSE);
-//            Objects.requireNonNull(myDialogue.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//            myDialogue.show();
+            myDialogue = new Dialog(DisplayGatheringList.this);
+            myDialogue.setContentView(R.layout.dialog_general_progress);
+            myDialogue.setCanceledOnTouchOutside(FALSE);
+            Objects.requireNonNull(myDialogue.getWindow()).setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            myDialogue.show();
         }
 
         @Nullable
@@ -275,7 +274,7 @@ public class DisplayGatheringList extends AppCompatActivity {
 //                Toast.makeText(DisplayGatheringList.this, len + "Gathering" + jIndex, Toast.LENGTH_LONG).show();
             }
 
-
+        myDialogue.dismiss();
 
         }
     }

@@ -15,12 +15,15 @@
         android:roundIcon="@drawable/trackcovid"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".statstics"></activity>
+
+        <activity android:name=".Statistics"/>
         <activity android:name=".ChooseListActivity" />
         <activity android:name=".RegistrationFormPost" />
+
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
+
         <activity
             android:name=".Splash"
             android:screenOrientation="portrait"
