@@ -200,7 +200,6 @@ public class DisplayGatheringList extends AppCompatActivity {
                                     String size = innerObject.getString(Keys.approxGathering);
                                     gatheringModel = new GatheringModel(contact, blood_group, pincode,date,time,place,size);
                                     gatheringModels.add(gatheringModel);
-
                                 }
 
                             }
